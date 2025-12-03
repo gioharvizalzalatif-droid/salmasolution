@@ -7,18 +7,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+/* ============================================
+   CLIENTS & PARTNERSHIP SECTION
+   ============================================ */
 
-/* Clients & Partnership Styles */
 #clients {
     position: relative;
     overflow: hidden;
+    background-color: #f9fafc;
+    padding: 80px 0;
 }
 
 .clients-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
+/* Section Title */
+.clients-container .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.clients-container .section-title:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(to right, var(--secondary), var(--accent));
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.clients-container p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: var(--gray);
+    font-size: 1.1rem;
+}
+
+/* Scroll Wrapper */
 .clients-scroll-wrapper {
     position: relative;
     width: 100%;
@@ -27,12 +58,14 @@
     padding: 35px 0;
 }
 
+/* Clients Track (Animasi Otomatis) */
 .clients-track {
     display: flex;
     animation: scroll-left 40s linear infinite;
     width: fit-content;
 }
 
+/* Client Logo Items */
 .client-logo {
     flex: 0 0 180px;
     height: 120px;
@@ -55,12 +88,6 @@
     border-color: var(--secondary);
 }
 
-.client-logo:hover .client-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
 .client-logo img {
     max-width: 100px;
     max-height: 90px;
@@ -74,6 +101,7 @@
     opacity: 1;
 }
 
+/* Tooltip */
 .client-tooltip {
     position: absolute;
     bottom: -40px;
@@ -104,6 +132,125 @@
     border-color: transparent transparent var(--primary) transparent;
 }
 
+.client-logo:hover .client-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Navigation Buttons */
+.clients-nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0 20px;
+}
+
+.client-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.client-nav-btn:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.client-nav-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Gradient Overlay */
+.clients-scroll-wrapper:before,
+.clients-scroll-wrapper:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.clients-scroll-wrapper:before {
+    left: 0;
+    background: linear-gradient(to right, #f9fafc, rgba(249, 250, 252, 0));
+}
+
+.clients-scroll-wrapper:after {
+    right: 0;
+    background: linear-gradient(to left, #f9fafc, rgba(249, 250, 252, 0));
+}
+
+/* Pause Animation on Hover */
+.clients-scroll-wrapper:hover .clients-track {
+    animation-play-state: paused;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.testimonial-card:before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 4rem;
+    color: rgba(74, 140, 94, 0.1);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-card p {
+    text-align: left;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-card p:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Stats Section */
 .clients-stats {
     display: flex;
     justify-content: center;
@@ -144,39 +291,11 @@
     font-size: 1.1rem;
 }
 
-/* Animasi scroll infinite */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
 
-/* Efek gradient di sisi kiri dan kanan */
-.clients-scroll-wrapper:before,
-.clients-scroll-wrapper:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.clients-scroll-wrapper:before {
-    left: 0;
-    background: linear-gradient(to right, #f9fafc, rgba(249, 250, 252, 0));
-}
-
-.clients-scroll-wrapper:after {
-    right: 0;
-    background: linear-gradient(to left, #f9fafc, rgba(249, 250, 252, 0));
-}
-
-/* Responsive Styles untuk Clients Section */
+/* Tablet (992px ke bawah) */
 @media (max-width: 992px) {
     .client-logo {
         flex: 0 0 150px;
@@ -201,9 +320,25 @@
     .stat-item h3 {
         font-size: 2.2rem;
     }
+    
+    .clients-scroll-wrapper:before,
+    .clients-scroll-wrapper:after {
+        width: 50px;
+    }
+    
+    .client-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
 }
 
+/* Mobile Landscape (768px ke bawah) */
 @media (max-width: 768px) {
+    #clients {
+        padding: 60px 0;
+    }
+    
     .client-logo {
         flex: 0 0 120px;
         height: 85px;
@@ -235,10 +370,26 @@
     
     .clients-scroll-wrapper:before,
     .clients-scroll-wrapper:after {
-        width: 50px;
+        width: 30px;
+    }
+    
+    .client-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .clients-nav-container {
+        gap: 15px;
+        margin: 25px 0 15px;
+    }
+    
+    .testimonial-card {
+        padding: 20px;
     }
 }
 
+/* Mobile Portrait (576px ke bawah) */
 @media (max-width: 576px) {
     .client-logo {
         flex: 0 0 100px;
@@ -262,17 +413,116 @@
         max-width: 250px;
     }
     
-    #clients {
-        padding: 60px 0;
+    .client-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .clients-nav-container {
+        gap: 10px;
+        margin: 20px 0 10px;
+    }
+    
+    .testimonial-card:before {
+        font-size: 3rem;
+        top: 5px;
+        left: 15px;
+    }
+    
+    .testimonial-card {
+        padding: 15px;
+    }
+    
+    .clients-scroll-wrapper {
+        padding: 25px 0;
+        margin: 30px 0;
     }
 }
 
-/* Hover pause animation */
-.clients-scroll-wrapper:hover .clients-track {
-    animation-play-state: paused;
+/* Extra Small Devices (400px ke bawah) */
+@media (max-width: 400px) {
+    .client-logo {
+        flex: 0 0 85px;
+        height: 60px;
+        margin: 0 8px;
+    }
+    
+    .client-logo img {
+        max-width: 50px;
+        max-height: 25px;
+    }
+    
+    .client-tooltip {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        bottom: -35px;
+    }
+    
+    .client-nav-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .clients-nav-container {
+        gap: 8px;
+    }
 }
 
+/* Animation Controls for Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .clients-scroll-wrapper:hover .clients-track {
+        animation-play-state: running;
+    }
+    
+    .client-logo:hover {
+        transform: none;
+    }
+    
+    .client-logo:active {
+        transform: scale(0.95);
+    }
+}
 
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .client-logo img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #clients {
+        background: white !important;
+        padding: 50px 0 !important;
+    }
+    
+    .client-logo {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+        border: 1px solid #eee !important;
+    }
+    
+    .client-logo img {
+        filter: none !important;
+        opacity: 1 !important;
+    }
+    
+    .clients-scroll-wrapper:before,
+    .clients-scroll-wrapper:after {
+        display: none !important;
+    }
+    
+    .clients-track {
+        animation: none !important;
+    }
+    
+    .client-nav-btn {
+        display: none !important;
+    }
+}
         /* Reset & Base Styles */
         * {
             margin: 0;
@@ -1733,7 +1983,7 @@
                         <li><a href="#about">Tentang Kami</a></li>
                         <li><a href="#services">Layanan</a></li>
                         <li><a href="#team">Tim Kami</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
                         <li><a href="produk.html" class="nav-button">Produk Digital</a></li>
     
                 </ul>
@@ -1759,7 +2009,7 @@
             <p>SALMA Solutions adalah mitra strategis Anda dalam layanan konsultasi bisnis, headhunter profesional, dan produk digital HR Retainer. Kami hadir untuk mendukung pertumbuhan bisnis Anda dengan pendekatan yang tepat, efisien, dan berbasis hasil.</p>
             <div class="hero-buttons">
                 <a href="produk.html" class="btn btn-accent">PRODUK DIGITAL KAMI</a>
-                <a href="#contact" class="btn">KONSULTASI GRATIS</a>
+                <a href="https://wa.me/6281901763203" class="btn">KONSULTASI GRATIS</a>
             </div>
         </div>
     </section>
@@ -2015,16 +2265,16 @@
                             <div class="client-tooltip">Adivasa</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/admart.png" alt="Admart">
-                            <div class="client-tooltip">Admart</div>
+                            <img src="foto/admart.png" alt="PT Admart Indonesia">
+                            <div class="client-tooltip">PT Admart Indonesia</div>
                         </div>
                         <div class="client-logo">
                             <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang">
                             <div class="client-tooltip">Cotton DNA Semarang</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/logo-super-sublim-scaled.png" alt="SuperSublim">
-                            <div class="client-tooltip">Super Sublim Indonesia</div>
+                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia">
+                            <div class="client-tooltip">PT Supersublim Indonesia</div>
                         </div>
                         <div class="client-logo">
                             <img src="foto/nuclear-removebg-preview.png" alt="Nuclear">
@@ -2050,77 +2300,9 @@
                 
  
                     </div>
-                </div>
-                
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Hubungi Kami</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3 style="color:#1a3a5f;">Informasi Kontak</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <p><strong>Telepon</strong></p>
-                                <p>+62 819-0176-3203</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p><strong>Email</strong></p>
-                                <p>satulangkahmajubersama@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <p><strong>Alamat</strong></p>
-                                <p>Sampangan, Semarang, Jawa Tengah  <p>Bringin, Ngaliyan, Jawa Tengah</p>
-
-
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div>
-                                <p><strong>Instagram</strong></p>
-                                <p>@satulangkah_bersama</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
                     
                 </div>
-                
-                <div class="contact-form">
-
-                <h3>Jam Operasional</h3>
-                    <div class="testimonial-card">
-                        <p><strong>Senin - Sabtu:</strong> 09:00 - 18:00</p>
-                        <p><strong>Minggu:</strong> Tutup</p>
-                    </div><BR></BR>
-                    <h3>Testimoni Klien</h3>
+                <h3>Testimoni Klien</h3>
                     <div class="testimonial-card">
                         <p>"SALMA Solutions membantu kami menata ulang sistem HR dengan pendekatan yang sangat profesional. Tim kami kini lebih produktif dan terstruktur."</p>
                         <p><strong>— HR Manager, PT Admart Indonesia</strong></p>
@@ -2130,14 +2312,15 @@
                         <p>"Layanan headhunter-nya sangat memudahkan. Dalam waktu singkat kami mendapatkan kandidat yang tepat dan langsung perform."</p>
                         <p><strong>— Branch Manager, PT Supersublim Indonesia</strong></p>
                     </div>
-                </div>
+                
+                
             </div>
         </div>
     </section>
 
 <!-- Footer -->
 <footer>
-    <div class="container">
+    <div class="container" id="kontak">
         <div class="footer-container">
             <div class="footer-main">
                 <div class="footer-brand">
@@ -2477,5 +2660,213 @@
         });
         
     </script>
+    <script>
+// Fungsi untuk bagian klien dengan animasi otomatis + kontrol manual
+document.addEventListener('DOMContentLoaded', function() {
+    const clientsSection = document.getElementById('clients');
+    if (!clientsSection) return;
+    
+    const scrollWrapper = clientsSection.querySelector('.clients-scroll-wrapper');
+    if (!scrollWrapper) return;
+    
+    const clientsTrack = scrollWrapper.querySelector('.clients-track');
+    if (!clientsTrack) return;
+    
+    // Atur ulang CSS untuk animasi otomatis
+    clientsTrack.style.animation = 'scroll-left 40s linear infinite';
+    
+    // Tambahkan tombol navigasi sederhana
+    const navContainer = document.createElement('div');
+    navContainer.className = 'simple-nav-container';
+    navContainer.style.cssText = `
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 25px 0 10px;
+    `;
+    
+    // Buat tombol navigasi sederhana
+    const leftBtn = document.createElement('button');
+    leftBtn.className = 'simple-nav-btn';
+    leftBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    leftBtn.title = 'Geser ke kiri';
+    
+    const rightBtn = document.createElement('button');
+    rightBtn.className = 'simple-nav-btn';
+    rightBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    rightBtn.title = 'Geser ke kanan';
+    
+    navContainer.appendChild(leftBtn);
+    navContainer.appendChild(rightBtn);
+    
+    // Sisipkan tombol setelah wrapper
+    scrollWrapper.parentNode.insertBefore(navContainer, scrollWrapper.nextSibling);
+    
+    // Fungsi untuk pause animasi saat manual scroll
+    function pauseAnimationTemporarily() {
+        clientsTrack.style.animationPlayState = 'paused';
+        setTimeout(() => {
+            clientsTrack.style.animationPlayState = 'running';
+        }, 3000); // Lanjutkan animasi setelah 3 detik
+    }
+    
+    // Fungsi untuk scroll manual dengan pause animasi
+    function scrollManual(direction) {
+        // Pause animasi sementara
+        clientsTrack.style.animationPlayState = 'paused';
+        
+        const scrollAmount = 220;
+        if (direction === 'left') {
+            scrollWrapper.scrollLeft -= scrollAmount;
+        } else {
+            scrollWrapper.scrollLeft += scrollAmount;
+        }
+        
+        // Lanjutkan animasi setelah 3 detik
+        setTimeout(() => {
+            clientsTrack.style.animationPlayState = 'running';
+        }, 3000);
+    }
+    
+    // Event listener untuk tombol
+    leftBtn.addEventListener('click', () => {
+        scrollManual('left');
+    });
+    
+    rightBtn.addEventListener('click', () => {
+        scrollManual('right');
+    });
+    
+    // Enable drag scrolling
+    let isDragging = false;
+    let startX, scrollLeftStart;
+    
+    scrollWrapper.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - scrollWrapper.offsetLeft;
+        scrollLeftStart = scrollWrapper.scrollLeft;
+        clientsTrack.style.animationPlayState = 'paused';
+        scrollWrapper.style.cursor = 'grabbing';
+    });
+    
+    scrollWrapper.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - scrollWrapper.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollWrapper.scrollLeft = scrollLeftStart - walk;
+    });
+    
+    scrollWrapper.addEventListener('mouseup', () => {
+        isDragging = false;
+        scrollWrapper.style.cursor = 'grab';
+        // Lanjutkan animasi setelah 3 detik
+        setTimeout(() => {
+            clientsTrack.style.animationPlayState = 'running';
+        }, 3000);
+    });
+    
+    scrollWrapper.addEventListener('mouseleave', () => {
+        isDragging = false;
+        scrollWrapper.style.cursor = 'grab';
+    });
+    
+    // Touch support untuk mobile
+    scrollWrapper.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - scrollWrapper.offsetLeft;
+        scrollLeftStart = scrollWrapper.scrollLeft;
+        clientsTrack.style.animationPlayState = 'paused';
+    });
+    
+    scrollWrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - scrollWrapper.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollWrapper.scrollLeft = scrollLeftStart - walk;
+    });
+    
+    scrollWrapper.addEventListener('touchend', () => {
+        isDragging = false;
+        setTimeout(() => {
+            clientsTrack.style.animationPlayState = 'running';
+        }, 3000);
+    });
+    
+    // Tambahkan CSS untuk tombol sederhana
+    const style = document.createElement('style');
+    style.textContent = `
+        .simple-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(26, 58, 95, 0.8);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .simple-nav-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .simple-nav-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Hilangkan scrollbar untuk tampilan yang lebih bersih */
+        .clients-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .clients-scroll-wrapper {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Kembalikan gradient overlay */
+        .clients-scroll-wrapper:before,
+        .clients-scroll-wrapper:after {
+            display: block !important;
+        }
+        
+        /* Kembalikan pause on hover */
+        .clients-scroll-wrapper:hover .clients-track {
+            animation-play-state: paused;
+        }
+        
+        @media (max-width: 768px) {
+            .simple-nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .simple-nav-container {
+                gap: 10px;
+                margin: 20px 0 5px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .simple-nav-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
 </body>
 </html>
