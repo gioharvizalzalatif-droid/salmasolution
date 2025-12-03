@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-/* ============================================
-   CLIENTS & PARTNERSHIP SECTION
-   ============================================ */
-
+/* Enhanced Clients Section Styles */
 #clients {
     position: relative;
     overflow: hidden;
@@ -49,59 +46,88 @@
     font-size: 1.1rem;
 }
 
-/* Scroll Wrapper */
-.clients-scroll-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin: 40px 0;
-    padding: 35px 0;
-}
-
-/* Clients Track (Animasi Otomatis) */
-.clients-track {
-    display: flex;
-    animation: scroll-left 40s linear infinite;
-    width: fit-content;
-}
-
-/* Client Logo Items */
-.client-logo {
-    flex: 0 0 180px;
-    height: 120px;
-    margin: 0 25px;
-    background: white;
-    border-radius: 12px;
+/* Enhanced Navigation Container */
+.clients-nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    gap: 20px;
+    margin: 40px 0;
+    position: relative;
+}
+
+/* Enhanced Scroll Wrapper */
+.clients-scroll-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    overflow-x: auto;
+    margin: 0 auto;
+    padding: 35px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    cursor: grab;
+}
+
+.clients-scroll-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.clients-scroll-wrapper:active {
+    cursor: grabbing;
+}
+
+/* Enhanced Clients Track */
+.clients-track {
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+
+/* Enhanced Client Logo Items */
+.client-logo {
+    flex: 0 0 180px;
+    height: 120px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.05);
+    padding: 20px;
+    min-width: 180px;
 }
 
 .client-logo:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border-color: var(--secondary);
+    z-index: 10;
 }
 
 .client-logo img {
-    max-width: 100px;
-    max-height: 90px;
+    max-width: 100%;
+    max-height: 80px;
     filter: grayscale(100%);
     opacity: 0.8;
     transition: all 0.4s ease;
+    object-fit: contain;
 }
 
 .client-logo:hover img {
     filter: grayscale(0);
     opacity: 1;
+    transform: scale(1.1);
 }
 
-/* Tooltip */
+/* Enhanced Tooltip */
 .client-tooltip {
     position: absolute;
     bottom: -40px;
@@ -109,16 +135,17 @@
     transform: translateX(-50%) translateY(10px);
     background-color: var(--primary);
     color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
     font-size: 0.85rem;
     font-weight: 600;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 20;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    pointer-events: none;
 }
 
 .client-tooltip:after {
@@ -138,92 +165,122 @@
     transform: translateX(-50%) translateY(0);
 }
 
-/* Navigation Buttons */
-.clients-nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 30px 0 20px;
-}
-
+/* Enhanced Navigation Buttons */
 .client-nav-btn {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: var(--primary);
-    color: white;
+    background: white;
+    color: var(--primary);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
 }
 
 .client-nav-btn:hover {
-    background: var(--secondary);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .client-nav-btn:active {
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(0.95);
 }
 
-/* Animation */
+.client-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Enhanced Animation */
 @keyframes scroll-left {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(calc(-180px * 5 - 30px * 4));
     }
 }
 
-/* Gradient Overlay */
+/* Gradient Overlay Enhancement */
 .clients-scroll-wrapper:before,
 .clients-scroll-wrapper:after {
     content: '';
     position: absolute;
     top: 0;
-    width: 100px;
+    width: 150px;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 .clients-scroll-wrapper:before {
     left: 0;
-    background: linear-gradient(to right, #f9fafc, rgba(249, 250, 252, 0));
+    background: linear-gradient(to right, #f9fafc 0%, rgba(249, 250, 252, 0) 100%);
 }
 
 .clients-scroll-wrapper:after {
     right: 0;
-    background: linear-gradient(to left, #f9fafc, rgba(249, 250, 252, 0));
+    background: linear-gradient(to left, #f9fafc 0%, rgba(249, 250, 252, 0) 100%);
 }
 
-/* Pause Animation on Hover */
-.clients-scroll-wrapper:hover .clients-track {
-    animation-play-state: paused;
+/* Testimonial Section */
+.testimonial-section {
+    margin-top: 60px;
+    text-align: center;
 }
 
-/* Testimonial Cards */
+.testimonial-section h3 {
+    margin-bottom: 30px;
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.testimonial-section h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--secondary), var(--accent));
+}
+
+.testimonial-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .testimonial-card {
     background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-top: 20px;
-    transition: var(--transition);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: 500px;
+    text-align: left;
+    transition: all 0.3s ease;
     position: relative;
 }
 
 .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 }
 
 .testimonial-card:before {
@@ -231,146 +288,149 @@
     position: absolute;
     top: 10px;
     left: 20px;
-    font-size: 4rem;
+    font-size: 5rem;
     color: rgba(74, 140, 94, 0.1);
     font-family: Georgia, serif;
     line-height: 1;
 }
 
 .testimonial-card p {
-    text-align: left;
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
+    font-style: italic;
+    color: var(--dark);
 }
 
 .testimonial-card p:last-child {
     margin-bottom: 0;
     font-weight: 600;
     color: var(--primary);
+    font-style: normal;
 }
 
-/* Stats Section */
-.clients-stats {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    margin-top: 70px;
-    flex-wrap: wrap;
+/* Pause Animation on Hover Enhancement */
+.clients-scroll-wrapper:hover .clients-track {
+    animation-play-state: paused;
 }
 
-.stat-item {
-    text-align: center;
-    background: white;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-    transition: var(--transition);
-    min-width: 180px;
+/* Active Drag State */
+.clients-scroll-wrapper.dragging {
+    cursor: grabbing;
 }
 
-.stat-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+.clients-scroll-wrapper.dragging .client-logo {
+    pointer-events: none;
 }
 
-.stat-item h3 {
-    font-size: 2.8rem;
-    color: var(--secondary);
-    margin-bottom: 10px;
-    background: linear-gradient(135deg, var(--secondary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .clients-nav-container {
+        gap: 15px;
+    }
+    
+    .client-nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .clients-scroll-wrapper {
+        max-width: 900px;
+    }
 }
 
-.stat-item p {
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0;
-    font-size: 1.1rem;
-}
-
-/* ============================================
-   RESPONSIVE STYLES
-   ============================================ */
-
-/* Tablet (992px ke bawah) */
 @media (max-width: 992px) {
+    .clients-track {
+        animation-duration: 35s;
+    }
+    
     .client-logo {
         flex: 0 0 150px;
         height: 100px;
-        margin: 0 20px;
-    }
-    
-    .client-logo img {
-        max-width: 80px;
-        max-height: 40px;
-    }
-    
-    .clients-stats {
-        gap: 30px;
-    }
-    
-    .stat-item {
-        padding: 25px 30px;
         min-width: 150px;
     }
     
-    .stat-item h3 {
-        font-size: 2.2rem;
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-150px * 5 - 30px * 4));
+        }
     }
     
     .clients-scroll-wrapper:before,
     .clients-scroll-wrapper:after {
-        width: 50px;
+        width: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    #clients {
+        padding: 60px 0;
+    }
+    
+    .clients-nav-container {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 30px 0;
     }
     
     .client-nav-btn {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
+        order: 2;
     }
-}
-
-/* Mobile Landscape (768px ke bawah) */
-@media (max-width: 768px) {
-    #clients {
-        padding: 60px 0;
+    
+    .clients-scroll-wrapper {
+        order: 1;
+        width: 100%;
+        margin: 0;
+        padding: 25px 0;
     }
     
     .client-logo {
-        flex: 0 0 120px;
-        height: 85px;
-        margin: 0 15px;
+        flex: 0 0 130px;
+        height: 90px;
+        min-width: 130px;
     }
     
-    .client-logo img {
-        max-width: 70px;
-        max-height: 35px;
-    }
-    
-    .clients-stats {
+    .clients-track {
         gap: 20px;
-        margin-top: 50px;
+        padding: 0 15px;
+        animation-duration: 30s;
     }
     
-    .stat-item {
-        padding: 20px;
-        min-width: 120px;
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-130px * 5 - 20px * 4));
+        }
     }
     
-    .stat-item h3 {
-        font-size: 1.8rem;
+    .testimonial-card {
+        padding: 25px;
     }
     
-    .stat-item p {
-        font-size: 1rem;
+    .testimonial-card:before {
+        font-size: 4rem;
+        top: 5px;
+        left: 15px;
     }
     
     .clients-scroll-wrapper:before,
     .clients-scroll-wrapper:after {
-        width: 30px;
+        width: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .clients-nav-container {
+        margin: 20px 0;
     }
     
     .client-nav-btn {
@@ -379,94 +439,49 @@
         font-size: 1rem;
     }
     
-    .clients-nav-container {
+    .client-logo {
+        flex: 0 0 110px;
+        height: 80px;
+        min-width: 110px;
+        padding: 15px;
+    }
+    
+    .client-logo img {
+        max-height: 60px;
+    }
+    
+    .clients-track {
         gap: 15px;
-        margin: 25px 0 15px;
+        padding: 0 10px;
+        animation-duration: 25s;
+    }
+    
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-110px * 5 - 15px * 4));
+        }
+    }
+    
+    .testimonial-section {
+        margin-top: 40px;
     }
     
     .testimonial-card {
         padding: 20px;
     }
-}
-
-/* Mobile Portrait (576px ke bawah) */
-@media (max-width: 576px) {
-    .client-logo {
-        flex: 0 0 100px;
-        height: 70px;
-        margin: 0 10px;
-    }
-    
-    .client-logo img {
-        max-width: 60px;
-        max-height: 30px;
-    }
-    
-    .clients-stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .stat-item {
-        width: 80%;
-        max-width: 250px;
-    }
-    
-    .client-nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-    }
-    
-    .clients-nav-container {
-        gap: 10px;
-        margin: 20px 0 10px;
-    }
-    
-    .testimonial-card:before {
-        font-size: 3rem;
-        top: 5px;
-        left: 15px;
-    }
-    
-    .testimonial-card {
-        padding: 15px;
-    }
-    
-    .clients-scroll-wrapper {
-        padding: 25px 0;
-        margin: 30px 0;
-    }
-}
-
-/* Extra Small Devices (400px ke bawah) */
-@media (max-width: 400px) {
-    .client-logo {
-        flex: 0 0 85px;
-        height: 60px;
-        margin: 0 8px;
-    }
-    
-    .client-logo img {
-        max-width: 50px;
-        max-height: 25px;
-    }
     
     .client-tooltip {
         font-size: 0.75rem;
-        padding: 4px 8px;
+        padding: 6px 12px;
         bottom: -35px;
     }
     
-    .client-nav-btn {
+    .clients-scroll-wrapper:before,
+    .clients-scroll-wrapper:after {
         width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
-    }
-    
-    .clients-nav-container {
-        gap: 8px;
     }
 }
 
@@ -483,6 +498,10 @@
     .client-logo:active {
         transform: scale(0.95);
     }
+    
+    .clients-scroll-wrapper {
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 /* High DPI Screens */
@@ -493,34 +512,16 @@
     }
 }
 
-/* Print Styles */
-@media print {
-    #clients {
-        background: white !important;
-        padding: 50px 0 !important;
-    }
-    
-    .client-logo {
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
-        border: 1px solid #eee !important;
-    }
-    
-    .client-logo img {
-        filter: none !important;
-        opacity: 1 !important;
-    }
-    
-    .clients-scroll-wrapper:before,
-    .clients-scroll-wrapper:after {
-        display: none !important;
-    }
-    
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
     .clients-track {
-        animation: none !important;
+        animation: none;
     }
     
-    .client-nav-btn {
-        display: none !important;
+    .client-logo,
+    .client-nav-btn,
+    .testimonial-card {
+        transition: none;
     }
 }
         /* Reset & Base Styles */
@@ -2247,76 +2248,106 @@
             </div>
         </div>
     </section>
-        <!-- Clients & Partnership Section -->
-    <section id="clients" style="background-color: #f9fafc; padding: 80px 0;">
-        <div class="container">
-            <h2 class="section-title">Klien & Kerjasama</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--gray);">
-                Kami bangga telah dipercaya oleh berbagai perusahaan terkemuka dalam mendukung transformasi bisnis dan pengelolaan SDM mereka.
-            </p>
-            
-            <div class="clients-container">
+<!-- Clients & Partnership Section -->
+<section id="clients" style="background-color: #f9fafc; padding: 80px 0;">
+    <div class="container">
+        <h2 class="section-title">Klien & Kerjasama</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--gray);">
+            Kami bangga telah dipercaya oleh berbagai perusahaan terkemuka dalam mendukung transformasi bisnis dan pengelolaan SDM mereka.
+        </p>
+        
+        <div class="clients-container">
+            <!-- Navigation Buttons -->
+            <div class="clients-nav-container">
+                <button class="client-nav-btn left-btn" aria-label="Geser ke kiri">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
                 <!-- Clients Logos Horizontal Scroll -->
                 <div class="clients-scroll-wrapper">
                     <div class="clients-track">
+                        <!-- Logo klien akan diisi oleh JavaScript -->
                         <!-- Baris pertama logo -->
                         <div class="client-logo">
-                            <img src="foto/adivasa-removebg-preview.png" alt="Adivasa">
+                            <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
                             <div class="client-tooltip">Adivasa</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/admart.png" alt="PT Admart Indonesia">
+                            <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
                             <div class="client-tooltip">PT Admart Indonesia</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang">
+                            <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
                             <div class="client-tooltip">Cotton DNA Semarang</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia">
+                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
                             <div class="client-tooltip">PT Supersublim Indonesia</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/nuclear-removebg-preview.png" alt="Nuclear">
+                            <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
                             <div class="client-tooltip">Nuclear</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/pilar_abadi.png" alt="Pilar Abadi Realty">
+                            <img src="foto/pilar_abadi.png" alt="Pilar Abadi Realty" loading="lazy">
                             <div class="client-tooltip">Pilar Abadi Realty</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/pt_karya_sinergi_cemerlang-removebg-preview.png" alt="PT Karya Sinergi Cemerlang">
+                            <img src="foto/pt_karya_sinergi_cemerlang-removebg-preview.png" alt="PT Karya Sinergi Cemerlang" loading="lazy">
                             <div class="client-tooltip">PT Karya Sinergi Cemerlang</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/PT_Zhiyuan_International_Trade-removebg-preview.png" alt="PT Zhiyuan International">
+                            <img src="foto/PT_Zhiyuan_International_Trade-removebg-preview.png" alt="PT Zhiyuan International" loading="lazy">
                             <div class="client-tooltip">PT Zhiyuan International</div>
                         </div>
                         <div class="client-logo">
-                            <img src="foto/wadah_kertas_nusantara.png" alt="Wadah Kertas Nusantara">
+                            <img src="foto/wadah_kertas_nusantara.png" alt="Wadah Kertas Nusantara" loading="lazy">
                             <div class="client-tooltip">Wadah Kertas Nusantara</div>
                         </div>
-                        
-                
- 
+                        <!-- Duplikat untuk animasi seamless -->
+                        <div class="client-logo">
+                            <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
+                            <div class="client-tooltip">Adivasa</div>
+                        </div>
+                        <div class="client-logo">
+                            <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
+                            <div class="client-tooltip">PT Admart Indonesia</div>
+                        </div>
+                        <div class="client-logo">
+                            <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
+                            <div class="client-tooltip">Cotton DNA Semarang</div>
+                        </div>
+                        <div class="client-logo">
+                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
+                            <div class="client-tooltip">PT Supersublim Indonesia</div>
+                        </div>
+                        <div class="client-logo">
+                            <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
+                            <div class="client-tooltip">Nuclear</div>
+                        </div>
                     </div>
-                    
                 </div>
+                
+                <button class="client-nav-btn right-btn" aria-label="Geser ke kanan">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="testimonial-section">
                 <h3>Testimoni Klien</h3>
-                    <div class="testimonial-card">
-                        <p>"SALMA Solutions membantu kami menata ulang sistem HR dengan pendekatan yang sangat profesional. Tim kami kini lebih produktif dan terstruktur."</p>
-                        <p><strong>— HR Manager, PT Admart Indonesia</strong></p>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p>"Layanan headhunter-nya sangat memudahkan. Dalam waktu singkat kami mendapatkan kandidat yang tepat dan langsung perform."</p>
-                        <p><strong>— Branch Manager, PT Supersublim Indonesia</strong></p>
-                    </div>
+                <div class="testimonial-card">
+                    <p>"SALMA Solutions membantu kami menata ulang sistem HR dengan pendekatan yang sangat profesional. Tim kami kini lebih produktif dan terstruktur."</p>
+                    <p><strong>— HR Manager, PT Admart Indonesia</strong></p>
+                </div>
                 
-                
+                <div class="testimonial-card">
+                    <p>"Layanan headhunter-nya sangat memudahkan. Dalam waktu singkat kami mendapatkan kandidat yang tepat dan langsung perform."</p>
+                    <p><strong>— Branch Manager, PT Supersublim Indonesia</strong></p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- Footer -->
 <footer>
@@ -2661,211 +2692,166 @@
         
     </script>
     <script>
-// Fungsi untuk bagian klien dengan animasi otomatis + kontrol manual
+// Enhanced Clients Carousel with Auto-scroll and Manual Controls
 document.addEventListener('DOMContentLoaded', function() {
     const clientsSection = document.getElementById('clients');
     if (!clientsSection) return;
     
     const scrollWrapper = clientsSection.querySelector('.clients-scroll-wrapper');
-    if (!scrollWrapper) return;
+    const clientsTrack = clientsSection.querySelector('.clients-track');
+    const leftBtn = clientsSection.querySelector('.left-btn');
+    const rightBtn = clientsSection.querySelector('.right-btn');
     
-    const clientsTrack = scrollWrapper.querySelector('.clients-track');
-    if (!clientsTrack) return;
+    if (!scrollWrapper || !clientsTrack || !leftBtn || !rightBtn) return;
     
-    // Atur ulang CSS untuk animasi otomatis
-    clientsTrack.style.animation = 'scroll-left 40s linear infinite';
-    
-    // Tambahkan tombol navigasi sederhana
-    const navContainer = document.createElement('div');
-    navContainer.className = 'simple-nav-container';
-    navContainer.style.cssText = `
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin: 25px 0 10px;
-    `;
-    
-    // Buat tombol navigasi sederhana
-    const leftBtn = document.createElement('button');
-    leftBtn.className = 'simple-nav-btn';
-    leftBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-    leftBtn.title = 'Geser ke kiri';
-    
-    const rightBtn = document.createElement('button');
-    rightBtn.className = 'simple-nav-btn';
-    rightBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-    rightBtn.title = 'Geser ke kanan';
-    
-    navContainer.appendChild(leftBtn);
-    navContainer.appendChild(rightBtn);
-    
-    // Sisipkan tombol setelah wrapper
-    scrollWrapper.parentNode.insertBefore(navContainer, scrollWrapper.nextSibling);
-    
-    // Fungsi untuk pause animasi saat manual scroll
-    function pauseAnimationTemporarily() {
-        clientsTrack.style.animationPlayState = 'paused';
-        setTimeout(() => {
-            clientsTrack.style.animationPlayState = 'running';
-        }, 3000); // Lanjutkan animasi setelah 3 detik
-    }
-    
-    // Fungsi untuk scroll manual dengan pause animasi
-    function scrollManual(direction) {
-        // Pause animasi sementara
-        clientsTrack.style.animationPlayState = 'paused';
-        
-        const scrollAmount = 220;
-        if (direction === 'left') {
-            scrollWrapper.scrollLeft -= scrollAmount;
-        } else {
-            scrollWrapper.scrollLeft += scrollAmount;
-        }
-        
-        // Lanjutkan animasi setelah 3 detik
-        setTimeout(() => {
-            clientsTrack.style.animationPlayState = 'running';
-        }, 3000);
-    }
-    
-    // Event listener untuk tombol
-    leftBtn.addEventListener('click', () => {
-        scrollManual('left');
-    });
-    
-    rightBtn.addEventListener('click', () => {
-        scrollManual('right');
-    });
-    
-    // Enable drag scrolling
+    // Variables for drag functionality
     let isDragging = false;
-    let startX, scrollLeftStart;
+    let startX;
+    let scrollLeft;
+    let autoScrollInterval;
+    let isAutoScrolling = true;
     
-    scrollWrapper.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.pageX - scrollWrapper.offsetLeft;
-        scrollLeftStart = scrollWrapper.scrollLeft;
+    // Initialize auto-scroll
+    function initAutoScroll() {
+        // Reset animation
+        clientsTrack.style.animation = 'scroll-left 40s linear infinite';
+        clientsTrack.style.animationPlayState = 'running';
+        
+        // Pause on hover
+        scrollWrapper.addEventListener('mouseenter', () => {
+            if (isAutoScrolling) {
+                clientsTrack.style.animationPlayState = 'paused';
+            }
+        });
+        
+        scrollWrapper.addEventListener('mouseleave', () => {
+            if (isAutoScrolling) {
+                clientsTrack.style.animationPlayState = 'running';
+            }
+        });
+    }
+    
+    // Manual scroll functions
+    function scrollLeftManual() {
+        isAutoScrolling = false;
         clientsTrack.style.animationPlayState = 'paused';
-        scrollWrapper.style.cursor = 'grabbing';
-    });
+        
+        const scrollAmount = scrollWrapper.offsetWidth * 0.8;
+        scrollWrapper.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+        
+        // Resume auto-scroll after 5 seconds
+        setTimeout(() => {
+            if (!isDragging) {
+                isAutoScrolling = true;
+                clientsTrack.style.animationPlayState = 'running';
+            }
+        }, 5000);
+    }
     
-    scrollWrapper.addEventListener('mousemove', (e) => {
+    function scrollRightManual() {
+        isAutoScrolling = false;
+        clientsTrack.style.animationPlayState = 'paused';
+        
+        const scrollAmount = scrollWrapper.offsetWidth * 0.8;
+        scrollWrapper.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+        
+        // Resume auto-scroll after 5 seconds
+        setTimeout(() => {
+            if (!isDragging) {
+                isAutoScrolling = true;
+                clientsTrack.style.animationPlayState = 'running';
+            }
+        }, 5000);
+    }
+    
+    // Drag functionality
+    function startDrag(e) {
+        isDragging = true;
+        isAutoScrolling = false;
+        clientsTrack.style.animationPlayState = 'paused';
+        
+        startX = e.pageX || e.touches[0].pageX;
+        scrollLeft = scrollWrapper.scrollLeft;
+        
+        scrollWrapper.style.cursor = 'grabbing';
+        scrollWrapper.style.userSelect = 'none';
+    }
+    
+    function doDrag(e) {
         if (!isDragging) return;
         e.preventDefault();
-        const x = e.pageX - scrollWrapper.offsetLeft;
-        const walk = (x - startX) * 2;
-        scrollWrapper.scrollLeft = scrollLeftStart - walk;
-    });
+        
+        const x = e.pageX || e.touches[0].pageX;
+        const walk = (x - startX) * 2; // Multiply for faster drag
+        scrollWrapper.scrollLeft = scrollLeft - walk;
+    }
     
-    scrollWrapper.addEventListener('mouseup', () => {
+    function endDrag() {
         isDragging = false;
         scrollWrapper.style.cursor = 'grab';
-        // Lanjutkan animasi setelah 3 detik
+        scrollWrapper.style.userSelect = 'auto';
+        
+        // Resume auto-scroll after 3 seconds if not manually interacting
         setTimeout(() => {
-            clientsTrack.style.animationPlayState = 'running';
+            if (!isDragging && isAutoScrolling) {
+                clientsTrack.style.animationPlayState = 'running';
+            }
         }, 3000);
+    }
+    
+    // Event listeners
+    leftBtn.addEventListener('click', scrollLeftManual);
+    rightBtn.addEventListener('click', scrollRightManual);
+    
+    // Mouse events for drag
+    scrollWrapper.addEventListener('mousedown', startDrag);
+    scrollWrapper.addEventListener('mousemove', doDrag);
+    scrollWrapper.addEventListener('mouseup', endDrag);
+    scrollWrapper.addEventListener('mouseleave', endDrag);
+    
+    // Touch events for mobile
+    scrollWrapper.addEventListener('touchstart', startDrag);
+    scrollWrapper.addEventListener('touchmove', doDrag);
+    scrollWrapper.addEventListener('touchend', endDrag);
+    
+    // Initialize
+    initAutoScroll();
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            scrollLeftManual();
+        } else if (e.key === 'ArrowRight') {
+            scrollRightManual();
+        }
     });
     
-    scrollWrapper.addEventListener('mouseleave', () => {
-        isDragging = false;
-        scrollWrapper.style.cursor = 'grab';
+    // Infinite scroll detection
+    scrollWrapper.addEventListener('scroll', () => {
+        const maxScroll = clientsTrack.scrollWidth - scrollWrapper.clientWidth;
+        if (scrollWrapper.scrollLeft >= maxScroll - 100) {
+            // Reset to beginning for seamless loop
+            setTimeout(() => {
+                scrollWrapper.scrollLeft = 0;
+            }, 100);
+        }
     });
     
-    // Touch support untuk mobile
-    scrollWrapper.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - scrollWrapper.offsetLeft;
-        scrollLeftStart = scrollWrapper.scrollLeft;
-        clientsTrack.style.animationPlayState = 'paused';
-    });
+    // Responsive adjustments
+    function handleResize() {
+        // Adjust animation speed based on screen size
+        const speed = window.innerWidth < 768 ? '50s' : '40s';
+        clientsTrack.style.animationDuration = speed;
+    }
     
-    scrollWrapper.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX - scrollWrapper.offsetLeft;
-        const walk = (x - startX) * 2;
-        scrollWrapper.scrollLeft = scrollLeftStart - walk;
-    });
-    
-    scrollWrapper.addEventListener('touchend', () => {
-        isDragging = false;
-        setTimeout(() => {
-            clientsTrack.style.animationPlayState = 'running';
-        }, 3000);
-    });
-    
-    // Tambahkan CSS untuk tombol sederhana
-    const style = document.createElement('style');
-    style.textContent = `
-        .simple-nav-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(26, 58, 95, 0.8);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .simple-nav-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .simple-nav-btn:active {
-            transform: scale(0.95);
-        }
-        
-        /* Hilangkan scrollbar untuk tampilan yang lebih bersih */
-        .clients-scroll-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .clients-scroll-wrapper {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        /* Kembalikan gradient overlay */
-        .clients-scroll-wrapper:before,
-        .clients-scroll-wrapper:after {
-            display: block !important;
-        }
-        
-        /* Kembalikan pause on hover */
-        .clients-scroll-wrapper:hover .clients-track {
-            animation-play-state: paused;
-        }
-        
-        @media (max-width: 768px) {
-            .simple-nav-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-            
-            .simple-nav-container {
-                gap: 10px;
-                margin: 20px 0 5px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .simple-nav-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
-            }
-        }
-    `;
-    document.head.appendChild(style);
+    window.addEventListener('resize', handleResize);
+    handleResize();
 });
 </script>
 </body>
