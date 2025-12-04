@@ -2,984 +2,14 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SALMA Solutions - Konsultan Bisnis & Penyedia SDM Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
-/* Gantikan CSS modal yang ada dengan ini */
-
-/* Simple Modal Styles */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    padding: 15px;
-}
-
-.modal-content {
-    background: white;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalFadeIn 0.2s ease;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.modal-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border-radius: 12px 12px 0 0;
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 1;
-}
-
-.modal-header h3 {
-    color: var(--primary);
-    margin: 0;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.close-modal {
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.3s;
-    line-height: 1;
-    padding: 5px;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-}
-
-.close-modal:hover {
-    color: var(--secondary);
-    background: rgba(0,0,0,0.05);
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.service-detail-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.service-detail-header {
-    text-align: center;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--light);
-}
-
-.service-detail-icon {
-    font-size: 2.5rem;
-    color: var(--secondary);
-    margin-bottom: 15px;
-    background: rgba(74, 140, 94, 0.1);
-    padding: 15px;
-    border-radius: 12px;
-    display: inline-block;
-}
-
-.service-detail-header h2 {
-    color: var(--primary);
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-}
-
-.service-detail-header p {
-    color: var(--gray);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.service-section {
-    background: var(--light);
-    padding: 18px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-.service-section h4 {
-    color: var(--primary);
-    margin-bottom: 12px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.service-section h4 i {
-    color: var(--accent);
-    font-size: 0.9rem;
-}
-
-.service-section ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.service-section ul li {
-    padding: 6px 0;
-    padding-left: 22px;
-    position: relative;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: var(--dark);
-}
-
-.service-section ul li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--secondary);
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.service-section ul li strong {
-    color: var(--primary);
-}
-
-.service-cta {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.service-cta .btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 0.95rem;
-}
-
-.service-cta .btn-outline {
-    margin-top: 10px;
-    background: transparent;
-}
-
-/* Compact features for HR Retainer */
-.compact-features {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.compact-feature {
-    background: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.compact-feature strong {
-    color: var(--primary);
-    display: block;
-    margin-bottom: 3px;
-}
-
-/* Responsive untuk modal simple */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        max-height: 85vh;
-        margin: 10px;
-    }
-    
-    .modal-header {
-        padding: 15px;
-    }
-    
-    .modal-body {
-        padding: 15px;
-    }
-    
-    .service-section {
-        padding: 15px;
-    }
-    
-    .compact-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .service-cta {
-        padding-top: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .modal-content {
-        width: 100%;
-        border-radius: 10px;
-    }
-    
-    .modal-header h3 {
-        font-size: 1.2rem;
-    }
-    
-    .service-detail-header h2 {
-        font-size: 1.3rem;
-    }
-}
-
-
-
-
-
-
-
-.modal-header {
-    padding: 25px 30px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to right, var(--secondary), var(--accent));
-    color: white;
-    border-radius: 15px 15px 0 0;
-}
-
-.modal-header h3 {
-    color: white;
-    margin: 0;
-}
-
-.close-modal {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-    line-height: 1;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.close-modal:hover {
-    transform: rotate(90deg);
-}
-
-.modal-body {
-    padding: 30px;
-}
-
-.service-detail-content {
-    display: grid;
-    gap: 30px;
-}
-
-.service-detail-header {
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--light);
-}
-
-.service-detail-icon {
-    font-size: 3.5rem;
-    color: var(--secondary);
-    margin-bottom: 20px;
-}
-
-.service-detail-header h2 {
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.service-detail-header p {
-    color: var(--gray);
-    font-size: 1.1rem;
-}
-
-.service-features, .service-benefits {
-    background: var(--light);
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-.service-features h4, .service-benefits h4 {
-    color: var(--primary);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.service-features h4 i, .service-benefits h4 i {
-    color: var(--accent);
-}
-
-.service-features ul, .service-benefits ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.service-features ul li, .service-benefits ul li {
-    padding: 8px 0;
-    padding-left: 25px;
-    position: relative;
-}
-
-.service-features ul li:before, .service-benefits ul li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--secondary);
-    font-weight: bold;
-}
-
-.service-cta {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
-}
-
-/* Service Cards Minimal */
-.service-card-minimal {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.service-card-minimal:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, var(--secondary), var(--accent));
-}
-
-.service-card-minimal:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.service-icon-minimal {
-    font-size: 2.8rem;
-    color: var(--secondary);
-    margin-bottom: 20px;
-    display: inline-block;
-    padding: 20px;
-    border-radius: 50%;
-    background: rgba(74, 140, 94, 0.1);
-    transition: var(--transition);
-}
-
-.service-card-minimal:hover .service-icon-minimal {
-    transform: rotateY(180deg);
-    background: rgba(74, 140, 94, 0.2);
-}
-
-.service-card-minimal h3 {
-    margin-bottom: 15px;
-    color: var(--primary);
-    font-size: 1.4rem;
-}
-
-.service-card-minimal p {
-    color: var(--gray);
-    margin-bottom: 25px;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.btn-detail {
-    background-color: transparent;
-    border: 2px solid var(--secondary);
-    color: var(--secondary);
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.btn-detail:hover {
-    background-color: var(--secondary);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(74, 140, 94, 0.3);
-}
-/* Enhanced Clients Section Styles */
-#clients {
-    position: relative;
-    overflow: hidden;
-    background-color: #f9fafc;
-    padding: 80px 0;
-}
-
-.clients-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-/* Section Title */
-.clients-container .section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.clients-container .section-title:after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 5px;
-    background: linear-gradient(to right, var(--secondary), var(--accent));
-    margin: 20px auto;
-    border-radius: 5px;
-}
-
-.clients-container p {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 50px;
-    color: var(--gray);
-    font-size: 1.1rem;
-}
-
-/* Enhanced Navigation Container */
-.clients-nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin: 40px 0;
-    position: relative;
-}
-
-/* Enhanced Scroll Wrapper */
-.clients-scroll-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    overflow-x: auto;
-    margin: 0 auto;
-    padding: 35px 0;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    cursor: grab;
-}
-
-.clients-scroll-wrapper::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-.clients-scroll-wrapper:active {
-    cursor: grabbing;
-}
-
-/* Enhanced Clients Track */
-.clients-track {
-    display: flex;
-    gap: 30px;
-    padding: 0 20px;
-    width: max-content;
-    animation: scroll-left 40s linear infinite;
-}
-
-/* Enhanced Client Logo Items */
-.client-logo {
-    flex: 0 0 180px;
-    height: 120px;
-    background: white;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.05);
-    padding: 20px;
-    min-width: 180px;
-}
-
-.client-logo:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--secondary);
-    z-index: 10;
-}
-
-.client-logo img {
-    max-width: 100%;
-    max-height: 80px;
-    filter: grayscale(100%);
-    opacity: 0.8;
-    transition: all 0.4s ease;
-    object-fit: contain;
-}
-
-.client-logo:hover img {
-    filter: grayscale(0);
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* Enhanced Tooltip */
-.client-tooltip {
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background-color: var(--primary);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 20;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    pointer-events: none;
-}
-
-.client-tooltip:after {
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 6px 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent var(--primary) transparent;
-}
-
-.client-logo:hover .client-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-/* Enhanced Navigation Buttons */
-.client-nav-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: white;
-    color: var(--primary);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    position: relative;
-    z-index: 5;
-    flex-shrink: 0;
-}
-
-.client-nav-btn:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.client-nav-btn:active {
-    transform: translateY(-1px) scale(0.95);
-}
-
-.client-nav-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Enhanced Animation */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-180px * 5 - 30px * 4));
-    }
-}
-
-/* Gradient Overlay Enhancement */
-.clients-scroll-wrapper:before,
-.clients-scroll-wrapper:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    z-index: 3;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-
-.clients-scroll-wrapper:before {
-    left: 0;
-    background: linear-gradient(to right, #f9fafc 0%, rgba(249, 250, 252, 0) 100%);
-}
-
-.clients-scroll-wrapper:after {
-    right: 0;
-    background: linear-gradient(to left, #f9fafc 0%, rgba(249, 250, 252, 0) 100%);
-}
-
-/* Testimonial Section */
-.testimonial-section {
-    margin-top: 60px;
-    text-align: center;
-}
-
-.testimonial-section h3 {
-    margin-bottom: 30px;
-    color: var(--primary);
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-.testimonial-section h3:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, var(--secondary), var(--accent));
-}
-
-.testimonial-cards {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.testimonial-card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    max-width: 500px;
-    text-align: left;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-}
-
-.testimonial-card:before {
-    content: '"';
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    font-size: 5rem;
-    color: rgba(74, 140, 94, 0.1);
-    font-family: Georgia, serif;
-    line-height: 1;
-}
-
-.testimonial-card p {
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-    font-style: italic;
-    color: var(--dark);
-}
-
-.testimonial-card p:last-child {
-    margin-bottom: 0;
-    font-weight: 600;
-    color: var(--primary);
-    font-style: normal;
-}
-
-/* Pause Animation on Hover Enhancement */
-.clients-scroll-wrapper:hover .clients-track {
-    animation-play-state: paused;
-}
-
-/* Active Drag State */
-.clients-scroll-wrapper.dragging {
-    cursor: grabbing;
-}
-
-.clients-scroll-wrapper.dragging .client-logo {
-    pointer-events: none;
-}
-
-/* Responsive Styles */
-@media (max-width: 1200px) {
-    .clients-nav-container {
-        gap: 15px;
-    }
-    
-    .client-nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-    
-    .clients-scroll-wrapper {
-        max-width: 900px;
-    }
-}
-
-@media (max-width: 992px) {
-    .clients-track {
-        animation-duration: 35s;
-    }
-    
-    .client-logo {
-        flex: 0 0 150px;
-        height: 100px;
-        min-width: 150px;
-    }
-    
-    @keyframes scroll-left {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-150px * 5 - 30px * 4));
-        }
-    }
-    
-    .clients-scroll-wrapper:before,
-    .clients-scroll-wrapper:after {
-        width: 80px;
-    }
-}
-
-@media (max-width: 768px) {
-    #clients {
-        padding: 60px 0;
-    }
-    
-    .clients-nav-container {
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 30px 0;
-    }
-    
-    .client-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
-        order: 2;
-    }
-    
-    .clients-scroll-wrapper {
-        order: 1;
-        width: 100%;
-        margin: 0;
-        padding: 25px 0;
-    }
-    
-    .client-logo {
-        flex: 0 0 130px;
-        height: 90px;
-        min-width: 130px;
-    }
-    
-    .clients-track {
-        gap: 20px;
-        padding: 0 15px;
-        animation-duration: 30s;
-    }
-    
-    @keyframes scroll-left {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-130px * 5 - 20px * 4));
-        }
-    }
-    
-    .testimonial-card {
-        padding: 25px;
-    }
-    
-    .testimonial-card:before {
-        font-size: 4rem;
-        top: 5px;
-        left: 15px;
-    }
-    
-    .clients-scroll-wrapper:before,
-    .clients-scroll-wrapper:after {
-        width: 50px;
-    }
-}
-
-@media (max-width: 576px) {
-    .clients-nav-container {
-        margin: 20px 0;
-    }
-    
-    .client-nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .client-logo {
-        flex: 0 0 110px;
-        height: 80px;
-        min-width: 110px;
-        padding: 15px;
-    }
-    
-    .client-logo img {
-        max-height: 60px;
-    }
-    
-    .clients-track {
-        gap: 15px;
-        padding: 0 10px;
-        animation-duration: 25s;
-    }
-    
-    @keyframes scroll-left {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-110px * 5 - 15px * 4));
-        }
-    }
-    
-    .testimonial-section {
-        margin-top: 40px;
-    }
-    
-    .testimonial-card {
-        padding: 20px;
-    }
-    
-    .client-tooltip {
-        font-size: 0.75rem;
-        padding: 6px 12px;
-        bottom: -35px;
-    }
-    
-    .clients-scroll-wrapper:before,
-    .clients-scroll-wrapper:after {
-        width: 30px;
-    }
-}
-
-/* Animation Controls for Touch Devices */
-@media (hover: none) and (pointer: coarse) {
-    .clients-scroll-wrapper:hover .clients-track {
-        animation-play-state: running;
-    }
-    
-    .client-logo:hover {
-        transform: none;
-    }
-    
-    .client-logo:active {
-        transform: scale(0.95);
-    }
-    
-    .clients-scroll-wrapper {
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* High DPI Screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .client-logo img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Reduced Motion Preference */
-@media (prefers-reduced-motion: reduce) {
-    .clients-track {
-        animation: none;
-    }
-    
-    .client-logo,
-    .client-nav-btn,
-    .testimonial-card {
-        transition: none;
-    }
-}
-        /* Reset & Base Styles */
+        /* ============================================
+           RESET & VARIABLES
+        ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -1001,6 +31,7 @@
         
         html {
             scroll-behavior: smooth;
+            font-size: 100%;
         }
         
         body {
@@ -1029,27 +60,19 @@
             line-height: 1.3;
         }
         
-        h1 {
-            font-size: 3.5rem;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-        }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
         
         p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             color: var(--dark);
         }
         
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: clamp(12px, 2vw, 14px) clamp(25px, 3vw, 32px);
             background-color: var(--secondary);
             color: white;
             text-decoration: none;
@@ -1059,7 +82,7 @@
             border: none;
             cursor: pointer;
             text-align: center;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             box-shadow: 0 4px 15px rgba(74, 140, 94, 0.3);
         }
         
@@ -1093,7 +116,7 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: clamp(40px, 6vw, 70px);
             position: relative;
         }
         
@@ -1107,571 +130,159 @@
             border-radius: 5px;
         }
         
-       
-       
-       
-       
- /* ============================================
-   HEADER STYLES - FIXED VERSION
-============================================ */
-
-/* Header utama */
-header {
-    background-color: white;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 80px;
-    transition: all 0.3s ease;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    height: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Logo dengan jarak yang cukup */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Jarak antara gambar dan teks */
-    padding: 10px 0;
-}
-
-.logo-image {
-    height: 50px;
-    width: auto;
-}
-
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    letter-spacing: 0.5px;
-}
-
-.logo-text span {
-    color: var(--secondary);
-}
-
-/* Desktop Navigation */
-nav {
-    display: block;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 600;
-    transition: color 0.3s;
-    position: relative;
-    font-size: 1rem;
-    padding: 5px 0;
-}
-
-nav ul li a:hover {
-    color: var(--secondary);
-}
-
-nav ul li a:after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary);
-    transition: width 0.3s;
-}
-
-nav ul li a:hover:after {
-    width: 100%;
-}
-
-.nav-button {
-    background-color: var(--accent);
-    color: var(--dark);
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(248, 183, 57, 0.2);
-}
-
-.nav-button:hover {
-    background-color: #e6a82e;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Mobile Menu Button - HIDDEN DI DESKTOP */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: var(--primary);
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-btn:hover {
-    background-color: rgba(74, 140, 94, 0.1);
-}
-
-/* ============================================
-   MOBILE STYLES (max-width: 992px)
-============================================ */
-@media (max-width: 992px) {
-    /* Mobile Menu Button - TAMPIL DI MOBILE */
-    .mobile-menu-btn {
-        display: flex;
-        margin-right: 10px;
-    }
-    
-    /* Navigation - SEMBUNYIKAN DI MOBILE */
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 100px 30px 30px;
-        z-index: 999;
-        transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow-y: auto;
-        box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-        display: block !important;
-    }
-    
-    /* Menu aktif */
-    nav.active {
-        transform: translateX(0);
-    }
-    
-    /* Menu items */
-    nav ul {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    nav ul li {
-        width: 100%;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    nav ul li:last-child {
-        border-bottom: none;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    nav ul li a {
-        display: block;
-        padding: 20px 15px;
-        font-size: 18px;
-        width: 100%;
-        font-weight: 500;
-    }
-    
-    nav ul li a:hover {
-        background-color: rgba(74, 140, 94, 0.05);
-        color: var(--secondary);
-        padding-left: 20px;
-    }
-    
-    nav ul li .nav-button {
-        width: 100%;
-        padding: 18px;
-        font-size: 18px;
-        margin: 10px 0;
-        text-align: center;
-        border-radius: 10px;
-    }
-    
-    /* Header adjustment untuk mobile */
-    .header-container {
-        padding: 0 20px;
-    }
-    
-    .logo {
-        gap: 12px;
-    }
-    
-    .logo-image {
-        height: 45px;
-    }
-    
-    .logo-text {
-        font-size: 1.3rem;
-    }
-}
-
-/* ============================================
-   ADJUSTMENT HERO SECTION UNTUK HEADER FIXED
-============================================ */
-.hero {
-    padding-top: 120px !important; /* Tambahkan padding untuk header fixed */
-    margin-top: 0 !important;
-}
-
-/* Untuk mobile */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 100px !important;
-    }
-    
-    header {
-        height: 70px;
-    }
-    
-    .header-container {
-        padding: 0 15px;
-    }
-    
-    .logo-image {
-        height: 40px;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-    
-    .mobile-menu-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
-    }
-}
-
-/* ============================================
-   PERBAIKAN SCROLL BEHAVIOR
-============================================ */
-html {
-    scroll-padding-top: 80px; /* Untuk anchor links */
-}
-
-@media (max-width: 768px) {
-    html {
-        scroll-padding-top: 70px;
-    }
-}
-
-/* ============================================
-   ANIMASI UNTUK MOBILE MENU
-============================================ */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideOut {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-}
-
-nav.active {
-    animation: slideIn 0.4s ease forwards;
-}
-
-/* ============================================
-   OVERLAY UNTUK MOBILE MENU
-============================================ */
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 998;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.menu-overlay.active {
-    display: block;
-    opacity: 1;
-}
-
-    
-/* PERBAIKAN MOBILE MENU - TAMBAHKAN INI */
-@media (max-width: 768px) {
-    /* Header dan container */
-    header {
-        height: 70px;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: white;
-        z-index: 1000;
-    }
-    
-    .header-container {
-        padding: 15px 0;
-        height: 70px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    /* Tombol menu */
-    .mobile-menu-btn {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: var(--primary);
-        cursor: pointer;
-        padding: 10px;
-        width: 40px;
-        height: 40px;
-        z-index: 1001;
-        position: relative;
-    }
-    
-    /* Navigasi */
-    nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 80px 20px 20px;
-        z-index: 999;
-        overflow-y: auto;
-        box-shadow: 0 5px 30px rgba(0,0,0,0.1);
-        margin-top: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-    }
-    
-    nav.active {
-        display: block;
-        transform: translateX(0);
-        animation: slideIn 0.3s ease forwards;
-    }
-    
-    @keyframes slideIn {
-        from {
+        /* ============================================
+           HEADER & NAVIGATION
+        ============================================ */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 80px;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        /* Desktop Navigation */
+        nav {
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 1rem;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-button {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(248, 183, 57, 0.2);
+        }
+        
+        .nav-button:hover {
+            background-color: #e6a82e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: rgba(74, 140, 94, 0.1);
+        }
+        
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
             opacity: 0;
-            transform: translateX(-100%);
+            transition: opacity 0.3s ease;
         }
-        to {
+        
+        .menu-overlay.active {
+            display: block;
             opacity: 1;
-            transform: translateX(0);
         }
-    }
-    
-    /* List menu */
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-    
-    nav ul li {
-        margin: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    nav ul li:last-child {
-        border-bottom: none;
-        margin-top: 20px;
-    }
-    
-    /* Link menu */
-    nav ul li a {
-        display: block;
-        padding: 18px 15px;
-        font-size: 16px;
-        color: var(--dark);
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        width: 100%;
-    }
-    
-    nav ul li a:hover {
-        background-color: rgba(74, 140, 94, 0.05);
-        color: var(--secondary);
-        padding-left: 20px;
-    }
-    
-    /* Tombol khusus (Produk Digital) */
-    nav ul li .nav-button {
-        background-color: var(--accent);
-        color: var(--dark);
-        border-radius: 8px;
-        text-align: center;
-        margin: 10px 0;
-        padding: 15px;
-        display: block;
-        width: 100%;
-        border: none;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    nav ul li .nav-button:hover {
-        background-color: #e6a82e;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    /* Hero section adjustment */
-    .hero {
-        padding: 140px 0 80px;
-        margin-top: 70px;
-    }
-    
-    /* Close button styling */
-    .mobile-menu-btn i.fa-times {
-        color: var(--secondary);
-    }
-    
-    /* Body no scroll when menu open */
-    body.menu-open {
-        overflow: hidden;
-    }
-    
-    /* Logo adjustment */
-    .logo {
-        z-index: 1001;
-    }
-    
-    .logo-image {
-        height: 40px;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-}
-
-/* Animation for menu icon */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Smooth transition for links */
-nav ul li a {
-    position: relative;
-    overflow: hidden;
-}
-
-nav ul li a:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--secondary), var(--accent));
-    transition: width 0.3s ease;
-}
-
-nav ul li a:hover:after {
-    width: 100%;
-}
-
-/* For tablets */
-@media (max-width: 992px) and (min-width: 769px) {
-    .mobile-menu-btn {
-        display: none !important;
-    }
-    
-    nav {
-        display: block !important;
-    }
-}
-/* Hero section margin for mobile */
-@media (max-width: 768px) {
-    .hero {
-        margin-top: 70px; /* Sama dengan tinggi header */
-        padding: 100px 0 80px;
-        min-height: auto;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 30px;
-    }
-    
-    .hero .btn {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-    }
-}
-
-
-
-
-
-        /* Hero Section */
+        
+        /* ============================================
+           HERO SECTION
+        ============================================ */
         .hero {
             background: 
                 linear-gradient(135deg, rgba(26, 58, 95, 0.85) 0%, rgba(26, 58, 95, 0.9) 100%), 
@@ -1680,10 +291,11 @@ nav ul li a:hover:after {
             background-position: center;
             background-attachment: fixed;
             color: white;
-            padding: 100px 0 120px;
+            padding: 180px 0 120px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
         
         .hero:before {
@@ -1697,28 +309,27 @@ nav ul li a:hover:after {
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             color: white;
             margin-bottom: 25px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            animation: fadeInUp 1s ease-out;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             max-width: 800px;
             margin: 0 auto 40px;
             color: rgba(255,255,255,0.9);
             font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.3s both;
         }
         
         .hero .btn {
             margin: 0 10px 15px;
-            animation: fadeInUp 1s ease-out 0.6s both;
         }
         
-        /* About Section */
+        /* ============================================
+           ABOUT SECTION
+        ============================================ */
         #about {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
             position: relative;
@@ -1781,7 +392,9 @@ nav ul li a:hover:after {
             transform: scale(1.05);
         }
         
-        /* Vision & Mission */
+        /* ============================================
+           VISION & MISSION
+        ============================================ */
         .vision-mission {
             background-color: #f0f4f8;
             position: relative;
@@ -1849,52 +462,127 @@ nav ul li a:hover:after {
             font-size: 1.2rem;
         }
         
-        /* Services */
-        #services {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+        /* ============================================
+           EXPERIENCE BANNER
+        ============================================ */
+        .experience-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 80px 0;
             position: relative;
+            overflow: hidden;
         }
         
-        #services:before {
+        .experience-banner:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a3a5f' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
-        /* Tambahkan kode CSS ini ke bagian services-grid */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-@media (max-width: 1200px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
         
-        .service-card {
+        .experience-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .experience-banner h2 {
+            color: white;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+        }
+        
+        .experience-banner p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* ============================================
+           MILESTONE SECTION
+        ============================================ */
+        .milestone-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .milestone-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .milestone-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .milestone-year {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 40px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(74, 140, 94, 0.3);
+            z-index: 1;
+        }
+        
+        .milestone-content {
             background: white;
-            padding: 40px 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            flex: 1;
+            transition: var(--transition);
+        }
+        
+        .milestone-content:hover {
+            transform: translateY(-5px);
+        }
+        
+        .milestone-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* ============================================
+           MARKET ANALYSIS
+        ============================================ */
+        .market-analysis-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .market-trends, .target-market, .competitive-advantage {
+            background: white;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
             position: relative;
-            overflow: hidden;
         }
         
-        .service-card:before {
+        .market-trends:before, .target-market:before, .competitive-advantage:before {
             content: '';
             position: absolute;
             top: 0;
@@ -1904,15 +592,153 @@ nav ul li a:hover:after {
             background: linear-gradient(to right, var(--secondary), var(--accent));
         }
         
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .market-trends:hover, .target-market:hover, .competitive-advantage:hover {
+            transform: translateY(-5px);
         }
         
-        .service-icon {
-            font-size: 3.5rem;
+        .target-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .target-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .target-item i {
+            font-size: 1.8rem;
             color: var(--secondary);
-            margin-bottom: 25px;
+            background: rgba(74, 140, 94, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .target-item h4 {
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .target-item p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+        
+        /* Advantage Grid */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .advantage-item {
+            text-align: center;
+            padding: 25px 20px;
+            border-radius: 12px;
+            background: white;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .advantage-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+        
+        .advantage-icon {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: rgba(74, 140, 94, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+        }
+        
+        .advantage-item h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .advantage-item p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        /* ============================================
+           SERVICES SECTION
+        ============================================ */
+        #services {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            position: relative;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card-minimal {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .service-card-minimal:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        
+        .service-card-minimal:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon-minimal {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
             display: inline-block;
             padding: 20px;
             border-radius: 50%;
@@ -1920,38 +746,258 @@ nav ul li a:hover:after {
             transition: var(--transition);
         }
         
-        .service-card:hover .service-icon {
+        .service-card-minimal:hover .service-icon-minimal {
             transform: rotateY(180deg);
             background: rgba(74, 140, 94, 0.2);
         }
         
-        .service-card h3 {
-            margin-bottom: 20px;
+        .service-card-minimal h3 {
+            margin-bottom: 15px;
             color: var(--primary);
+            font-size: 1.4rem;
         }
         
-        .service-card ul {
-            text-align: left;
-            margin-top: 20px;
-            list-style: none;
+        .service-card-minimal p {
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
         
-        .service-card ul li {
-            margin-bottom: 10px;
-            padding-left: 25px;
+        .btn-detail {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-detail:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 140, 94, 0.3);
+        }
+        
+        /* ============================================
+           MODAL STYLES
+        ============================================ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 15px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
             position: relative;
+            animation: modalFadeIn 0.2s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
         
-        .service-card ul li:before {
-            content: '•';
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-radius: 12px 12px 0 0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+        
+        .modal-header h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+            padding: 5px;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .service-detail-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .service-detail-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .service-detail-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            background: rgba(74, 140, 94, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .service-detail-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .service-detail-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .service-section {
+            background: var(--light);
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .service-section h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .service-section h4 i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .service-section ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .service-section ul li {
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        
+        .service-section ul li:before {
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--secondary);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
         }
         
-        /* Team */
+        .service-section ul li strong {
+            color: var(--primary);
+        }
+        
+        .service-cta {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .service-cta .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .service-cta .btn-outline {
+            margin-top: 10px;
+            background: transparent;
+        }
+        
+        /* Compact features for HR Retainer */
+        .compact-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .compact-feature {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .compact-feature strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        /* ============================================
+           TEAM SECTION
+        ============================================ */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2033,132 +1079,217 @@ nav ul li a:hover:after {
             transform: translateY(-3px);
         }
         
-        /* Contact */
-        #contact {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+        /* ============================================
+           CLIENTS SECTION
+        ============================================ */
+        #clients {
+            position: relative;
+            overflow: hidden;
+            background-color: #f9fafc;
+            padding: 80px 0;
+        }
+        
+        .clients-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .clients-container p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .clients-nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
             position: relative;
         }
         
-        #contact:before {
+        .clients-scroll-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            overflow-x: auto;
+            margin: 0 auto;
+            padding: 35px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+        
+        .clients-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .clients-track {
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+            width: max-content;
+            animation: scroll-left 40s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-180px * 5 - 30px * 4)); }
+        }
+        
+        .client-logo {
+            flex: 0 0 180px;
+            height: 120px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 20px;
+            min-width: 180px;
+        }
+        
+        .client-logo:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+            z-index: 10;
+        }
+        
+        .client-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: all 0.4s ease;
+            object-fit: contain;
+        }
+        
+        .client-logo:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .client-tooltip {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 20;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+        
+        .client-tooltip:after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a3a5f' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 6px 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent var(--primary) transparent;
         }
         
-        .contact-container {
+        .client-logo:hover .client-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .client-nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary);
+            border: none;
+            cursor: pointer;
             display: flex;
-            gap: 60px;
-        }
-        
-        .contact-info, .contact-form {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 25px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             position: relative;
-            padding-bottom: 15px;
-            color:black;
+            z-index: 5;
+            flex-shrink: 0;
         }
         
-        .contact-info h3:after {
+        .client-nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Testimonial Section */
+        .testimonial-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .testimonial-section h3 {
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .testimonial-section h3:after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
             height: 3px;
-            background-color: var(--accent);
-            color:black;
-
+            background: linear-gradient(to right, var(--secondary), var(--accent));
         }
         
-        .contact-details {
-            margin-bottom: 40px;
-        }
-        
-        .contact-item {
+        .testimonial-cards {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .contact-icon {
-            margin-right: 20px;
-            color: var(--secondary);
-            font-size: 1.3rem;
-            width: 30px;
-            text-align: center;
-            padding-top: 5px;
-        }
-        
-        .contact-item div p:first-child {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .contact-item div p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(74, 140, 94, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Testimonial Cards */
         .testimonial-card {
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-top: 20px;
-            transition: var(--transition);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 500px;
+            text-align: left;
+            transition: all 0.3s ease;
             position: relative;
         }
         
         .testimonial-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
         
         .testimonial-card:before {
@@ -2166,392 +1297,321 @@ nav ul li a:hover:after {
             position: absolute;
             top: 10px;
             left: 20px;
-            font-size: 4rem;
+            font-size: 5rem;
             color: rgba(74, 140, 94, 0.1);
             font-family: Georgia, serif;
             line-height: 1;
         }
         
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
+        /* ============================================
+           FOOTER SECTION
+        ============================================ */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
         }
         
-        .testimonial-card p:last-child {
-            margin-bottom: 0;
-            font-weight: 600;
-            color: var(--primary);
+        .footer-container {
+            margin-bottom: 40px;
         }
-
+        
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .footer-brand h3 {
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-brand h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-brand p {
+            margin-bottom: 10px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .footer-contact-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links li i {
+            margin-right: 12px;
+            width: 20px;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            height: 250px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
+            color: #ddd;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Milestone Styles */
-        .milestone-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .milestone-container:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 30px;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--secondary), var(--accent));
-            border-radius: 2px;
-        }
-
-        .milestone-item {
-            display: flex;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .milestone-year {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-right: 40px;
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(74, 140, 94, 0.3);
-            z-index: 1;
-        }
-
-        .milestone-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            flex: 1;
-            transition: var(--transition);
-        }
-
-        .milestone-content:hover {
-            transform: translateY(-5px);
-        }
-
-        .milestone-content h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        /* Market Analysis Styles */
-        .market-analysis-content {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-
-        .market-trends {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .market-trends:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-        }
-
-        .market-trends:hover {
-            transform: translateY(-5px);
-        }
-
-        .target-market {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .target-market:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-        }
-
-        .target-market:hover {
-            transform: translateY(-5px);
-        }
-
-        .target-list {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .target-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .target-item i {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            background: rgba(74, 140, 94, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .target-item h4 {
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .target-item p {
-            margin-bottom: 0;
-            color: var(--gray);
-        }
-
-        .competitive-advantage {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .competitive-advantage:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-        }
-
-        .competitive-advantage:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Update CSS untuk .advantage-grid */
-.advantage-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    margin-top: 30px;
-}
-
-@media (max-width: 1200px) {
-    .advantage-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .advantage-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Perbaikan styling untuk .advantage-item dengan 4 kolom */
-.advantage-item {
-    text-align: center;
-    padding: 25px 20px;
-    border-radius: 12px;
-    background: white;
-    transition: var(--transition);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
-.advantage-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    border-color: var(--secondary);
-}
-
-.advantage-icon {
-    font-size: 2.2rem;
-    color: var(--secondary);
-    margin-bottom: 20px;
-    padding: 18px;
-    border-radius: 12px;
-    background: rgba(74, 140, 94, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-}
-
-.advantage-item h4 {
-    margin-bottom: 15px;
-    color: var(--primary);
-    font-size: 1.1rem;
-    line-height: 1.4;
-}
-
-.advantage-item p {
-    margin-bottom: 0;
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    flex-grow: 1;
-}
-
-
-
-        /* Experience Banner */
-        .experience-banner {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-banner:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-
-        .experience-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .experience-banner h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .experience-banner p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* Responsive Styles */
+        /* ============================================
+           RESPONSIVE STYLES
+        ============================================ */
         @media (max-width: 1200px) {
-            h1 {
-                font-size: 3rem;
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            h2 {
-                font-size: 2.2rem;
+            .advantage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .clients-nav-container {
+                gap: 15px;
+            }
+            
+            .client-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .clients-scroll-wrapper {
+                max-width: 900px;
             }
         }
         
         @media (max-width: 992px) {
-            .about-content, .vm-container, .contact-container {
+            .mobile-menu-btn {
+                display: flex;
+                margin-right: 10px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 100px 30px 30px;
+                z-index: 999;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
                 flex-direction: column;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            nav.active {
+                transform: translateX(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                width: 100%;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 20px 15px;
+                font-size: 18px;
+                width: 100%;
+                font-weight: 500;
+            }
+            
+            nav ul li a:hover {
+                background-color: rgba(74, 140, 94, 0.05);
+                color: var(--secondary);
+                padding-left: 20px;
+            }
+            
+            nav ul li .nav-button {
+                width: 100%;
+                padding: 18px;
+                font-size: 18px;
+                margin: 10px 0;
+                text-align: center;
+                border-radius: 10px;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .logo {
+                gap: 12px;
+            }
+            
+            .logo-image {
+                height: 45px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .about-content, .vm-container, .contact-container {
+                flex-direction: column;
             }
             
             section {
                 padding: 80px 0;
             }
             
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            .hero {
+                padding: 160px 0 80px;
+                margin-top: 80px;
             }
             
-            nav ul.active {
-                display: flex;
+            .clients-track {
+                animation-duration: 35s;
             }
             
-            nav ul li {
-                margin: 10px 0;
+            .client-logo {
+                flex: 0 0 150px;
+                height: 100px;
+                min-width: 150px;
             }
             
-            .mobile-menu-btn {
-                display: block;
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-150px * 5 - 30px * 4)); }
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-contact-map {
+                gap: 30px;
             }
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
             
             .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
+                padding: 140px 0 80px;
+                margin-top: 80px;
             }
             
             .services-grid {
@@ -2597,6 +1657,115 @@ nav ul li a:hover:after {
             .experience-banner p {
                 font-size: 1.1rem;
             }
+            
+            .advantage-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                max-height: 85vh;
+                margin: 10px;
+            }
+            
+            .modal-header {
+                padding: 15px;
+            }
+            
+            .modal-body {
+                padding: 15px;
+            }
+            
+            .service-section {
+                padding: 15px;
+            }
+            
+            .compact-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-cta {
+                padding-top: 15px;
+            }
+            
+            #clients {
+                padding: 60px 0;
+            }
+            
+            .clients-nav-container {
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 30px 0;
+            }
+            
+            .client-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                order: 2;
+            }
+            
+            .clients-scroll-wrapper {
+                order: 1;
+                width: 100%;
+                margin: 0;
+                padding: 25px 0;
+            }
+            
+            .client-logo {
+                flex: 0 0 130px;
+                height: 90px;
+                min-width: 130px;
+            }
+            
+            .clients-track {
+                gap: 20px;
+                padding: 0 15px;
+                animation-duration: 30s;
+            }
+            
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-130px * 5 - 20px * 4)); }
+            }
+            
+            .testimonial-card {
+                padding: 25px;
+            }
+            
+            .testimonial-card:before {
+                font-size: 4rem;
+                top: 5px;
+                left: 15px;
+            }
+            
+            .footer-contact-map {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-brand,
+            .contact-info {
+                text-align: center;
+            }
+            
+            .footer-brand h3:after,
+            .contact-info h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-links li {
+                justify-content: center;
+            }
+            
+            .map-container {
+                height: 200px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -2610,352 +1779,154 @@ nav ul li a:hover:after {
                 margin-bottom: 50px;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a3a5f;
-            --secondary: #4a8c5e;
-            --accent: #f8b739;
-            --light: #f5f7fa;
-            --dark: #2c3e50;
-            --gray: #6c757d;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: #3a7a4e;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .btn-accent {
-            background-color: var(--accent);
-            color: var(--dark);
-        }
-        
-        .btn-accent:hover {
-            background-color: #e6a82e;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        /* Top Bar dengan Jam Operasional */
-        .top-bar {
-            background: linear-gradient(90deg, #1a3a5f 0%, #2c5282 50%, #1a3a5f 100%);
-            color: white;
-            padding: 10px 0;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .top-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            animation: spotlight 10s ease-in-out infinite;
-        }
-        
-        @keyframes spotlight {
-            0% {
-                left: -100%;
-            }
-            15% {
-                left: 100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        .top-bar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .business-hours {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .business-hours i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
-        
-        .contact-top {
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-top i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
-        
-        .contact-top a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
-        }
-        
-        .contact-top a:hover {
-            color: var(--accent);
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo-image {
-            height: 50px;
-            margin-left: 20px;
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #066DB5;
-            position: relative;
-            overflow: hidden;
-            padding: px 10px;
-            border-radius: 5px;
-        }
-        
-      
-        
-        .logo-text span {
-            color: #06A1F9;
-            position: relative;
-            z-index: 1;
-        }
-        
-
-        
-
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        .nav-button {
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background-color: #e6a82e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .top-bar-container {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
+            .modal-content {
                 width: 100%;
-                background-color: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                padding: 100px;
+                border-radius: 10px;
             }
             
-            nav.active {
-                display: block;
+            .modal-header h3 {
+                font-size: 1.2rem;
             }
             
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
+            .service-detail-header h2 {
+                font-size: 1.3rem;
             }
             
-            nav ul li {
-                margin: 10px 0;
+            .clients-nav-container {
+                margin: 20px 0;
             }
             
-            .mobile-menu-btn {
-                display: block;
+            .client-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
             
-            .contact-top {
-                flex-direction: column;
-                gap: 5px;
+            .client-logo {
+                flex: 0 0 110px;
+                height: 80px;
+                min-width: 110px;
+                padding: 15px;
             }
             
-            .contact-top a {
-                margin-left: 0;
+            .client-logo img {
+                max-height: 60px;
+            }
+            
+            .clients-track {
+                gap: 15px;
+                padding: 0 10px;
+                animation-duration: 25s;
+            }
+            
+            @keyframes scroll-left {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-110px * 5 - 15px * 4)); }
+            }
+            
+            .testimonial-section {
+                margin-top: 40px;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .client-tooltip {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                bottom: -35px;
+            }
+            
+            footer {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-main {
+                gap: 30px;
+            }
+            
+            .footer-contact-map {
+                gap: 25px;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo-image {
+                height: 40px;
             }
             
             .logo-text {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-menu-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+                margin-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
             }
         }
-        
     </style>
-</head>  
-
+</head>
+<body>
+    <!-- Header -->
     <header>
-    <div class="header-container">
-        <div class="logo">
-            <img src="logo.png" alt="SALMA Solutions" class="logo-image">
-            <div class="logo-text">SALMA <span>Solutions</span></div>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="SALMA Solutions" class="logo-image">
+                <div class="logo-text">SALMA <span>Solutions</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#team">Tim Kami</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="produk.html" class="nav-button">Produk Digital</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <button class="mobile-menu-btn" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html">Beranda</a></li>
-                <li><a href="#about">Tentang Kami</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#team">Tim Kami</a></li>
-                <li><a href="#kontak">Kontak</a></li>
-                <li><a href="produk.html" class="nav-button">Produk Digital</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
+    </header>
+    
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
+    
     <!-- Hero Section -->
-<section class="hero" id="home" style="padding-top: 120px;">
+    <section class="hero" id="home">
         <div class="container">
             <h1>Solusi Cerdas Kebutuhan Bisnis Anda</h1>
             <p>SALMA Solutions adalah mitra strategis Anda dalam layanan konsultasi bisnis, headhunter profesional, dan produk digital HR Retainer. Kami hadir untuk mendukung pertumbuhan bisnis Anda dengan pendekatan yang tepat, efisien, dan berbasis hasil.</p>
@@ -2965,7 +1936,7 @@ nav ul li a:hover:after {
             </div>
         </div>
     </section>
-
+    
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -2983,7 +1954,7 @@ nav ul li a:hover:after {
             </div>
         </div>
     </section>
-
+    
     <!-- Vision & Mission -->
     <section class="vision-mission">
         <div class="container">
@@ -3004,7 +1975,7 @@ nav ul li a:hover:after {
             </div>
         </div>
     </section>
-
+    
     <!-- Experience Banner -->
     <div class="experience-banner">
         <div class="container">
@@ -3014,7 +1985,7 @@ nav ul li a:hover:after {
             </div>
         </div>
     </div>
-
+    
     <!-- Milestone Section -->
     <section id="milestone">
         <div class="container">
@@ -3044,7 +2015,7 @@ nav ul li a:hover:after {
             </div>
         </div>
     </section>
-
+    
     <!-- Market Analysis Section -->
     <section id="market-analysis" class="vision-mission">
         <div class="container">
@@ -3083,112 +2054,112 @@ nav ul li a:hover:after {
                 </div>
                 
                 <div class="competitive-advantage">
-    <h3>Keunggulan Kompetitif SALMA Solutions</h3>
-    <div class="advantage-grid">
-        <!-- Keunggulan 1 -->
-        <div class="advantage-item">
-            <div class="advantage-icon">
-                <i class="fas fa-sliders-h"></i>
-            </div>
-            <h4>Layanan Fleksibel & Terukur</h4>
-            <p>Kami menyesuaikan solusi sesuai kebutuhan spesifik klien dengan pendekatan yang personal dan hasil yang terukur.</p>
-        </div>
-        
-        <!-- Keunggulan 2 -->
-        <div class="advantage-item">
-            <div class="advantage-icon">
-                <i class="fas fa-user-tie"></i>
-            </div>
-            <h4>Tim Ahli Berpengalaman</h4>
-            <p>Tim profesional dengan pengalaman 15+ tahun di berbagai industri, siap memberikan solusi terbaik untuk bisnis Anda.</p>
-        </div>
-        
-        <!-- Keunggulan 3 -->
-        <div class="advantage-item">
-            <div class="advantage-icon">
-                <i class="fas fa-chart-pie"></i>
-            </div>
-            <h4>Pendekatan Berbasis Hasil</h4>
-            <p>Fokus pada pencapaian hasil yang terukur dan berdampak langsung pada pertumbuhan dan efisiensi bisnis Anda.</p>
-        </div>
-        
-        <!-- Keunggulan 4 -->
-        <div class="advantage-item">
-            <div class="advantage-icon">
-                <i class="fas fa-sync-alt"></i>
-            </div>
-            <h4>Dukungan End-to-End</h4>
-            <p>Mulai dari konsultasi, perencanaan, hingga eksekusi lapangan dengan pendampingan yang komprehensif.</p>
-        </div>
-    </div>
-</div>
+                    <h3>Keunggulan Kompetitif SALMA Solutions</h3>
+                    <div class="advantage-grid">
+                        <!-- Keunggulan 1 -->
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-sliders-h"></i>
+                            </div>
+                            <h4>Layanan Fleksibel & Terukur</h4>
+                            <p>Kami menyesuaikan solusi sesuai kebutuhan spesifik klien dengan pendekatan yang personal dan hasil yang terukur.</p>
+                        </div>
+                        
+                        <!-- Keunggulan 2 -->
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4>Tim Ahli Berpengalaman</h4>
+                            <p>Tim profesional dengan pengalaman 15+ tahun di berbagai industri, siap memberikan solusi terbaik untuk bisnis Anda.</p>
+                        </div>
+                        
+                        <!-- Keunggulan 3 -->
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h4>Pendekatan Berbasis Hasil</h4>
+                            <p>Fokus pada pencapaian hasil yang terukur dan berdampak langsung pada pertumbuhan dan efisiensi bisnis Anda.</p>
+                        </div>
+                        
+                        <!-- Keunggulan 4 -->
+                        <div class="advantage-item">
+                            <div class="advantage-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Dukungan End-to-End</h4>
+                            <p>Mulai dari konsultasi, perencanaan, hingga eksekusi lapangan dengan pendampingan yang komprehensif.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-<!-- Services -->
-<section id="services">
-    <div class="container">
-        <h2 class="section-title">Layanan Kami</h2>
-        <div class="services-grid">
-            <!-- Layanan 1: Konsultasi Bisnis & Manajemen -->
-            <div class="service-card-minimal">
-                <div class="service-icon-minimal">
-                    <i class="fas fa-brain"></i>
+    
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Kami</h2>
+            <div class="services-grid">
+                <!-- Layanan 1: Konsultasi Bisnis & Manajemen -->
+                <div class="service-card-minimal">
+                    <div class="service-icon-minimal">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Konsultasi Bisnis & Manajemen</h3>
+                    <p>Menyusun strategi bisnis, sistem kerja, dan SOP yang efektif untuk efisiensi dan pertumbuhan bisnis jangka panjang.</p>
+                    <button class="btn-detail" onclick="openServiceModal('consulting')">
+                        Lihat Detail <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3>Konsultasi Bisnis & Manajemen</h3>
-                <p>Menyusun strategi bisnis, sistem kerja, dan SOP yang efektif untuk efisiensi dan pertumbuhan bisnis jangka panjang.</p>
-                <button class="btn-detail" onclick="openServiceModal('consulting')">
-                    Lihat Detail <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- Layanan 2: Penyediaan Jasa Tenaga Kerja -->
-            <div class="service-card-minimal">
-                <div class="service-icon-minimal">
-                    <i class="fas fa-users"></i>
+                
+                <!-- Layanan 2: Penyediaan Jasa Tenaga Kerja -->
+                <div class="service-card-minimal">
+                    <div class="service-icon-minimal">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Penyediaan Jasa Tenaga Kerja</h3>
+                    <p>Menyediakan kandidat profesional yang sesuai dengan kebutuhan perusahaan, mulai dari level staff hingga eksekutif.</p>
+                    <button class="btn-detail" onclick="openServiceModal('staffing')">
+                        Lihat Detail <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3>Penyediaan Jasa Tenaga Kerja</h3>
-                <p>Menyediakan kandidat profesional yang sesuai dengan kebutuhan perusahaan, mulai dari level staff hingga eksekutif.</p>
-                <button class="btn-detail" onclick="openServiceModal('staffing')">
-                    Lihat Detail <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- Layanan 3: Audit & Pengembangan HR -->
-            <div class="service-card-minimal">
-                <div class="service-icon-minimal">
-                    <i class="fas fa-chart-line"></i>
+                
+                <!-- Layanan 3: Audit & Pengembangan HR -->
+                <div class="service-card-minimal">
+                    <div class="service-icon-minimal">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Audit & Pengembangan HR</h3>
+                    <p>Menganalisis sistem HR Anda, mengevaluasi kinerja SDM, dan memberi rekomendasi perbaikan.</p>
+                    <button class="btn-detail" onclick="openServiceModal('hr-audit')">
+                        Lihat Detail <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3>Audit & Pengembangan HR</h3>
-                <p>Menganalisis sistem HR Anda, mengevaluasi kinerja SDM, dan memberi rekomendasi perbaikan.</p>
-                <button class="btn-detail" onclick="openServiceModal('hr-audit')">
-                    Lihat Detail <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- Layanan 4: Program HR Retainer -->
-            <div class="service-card-minimal">
-                <div class="service-icon-minimal">
-                    <i class="fas fa-user-cog"></i>
+                
+                <!-- Layanan 4: Program HR Retainer -->
+                <div class="service-card-minimal">
+                    <div class="service-icon-minimal">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Program HR Retainer</h3>
+                    <p>Layanan HR Menyeluruh & Berkelanjutan untuk Perusahaan Berkembang</p>
+                    <button class="btn-detail" onclick="openServiceModal('hr-retainer')">
+                        Lihat Detail <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
-                <h3>Program HR Retainer</h3>
-                <p>Layanan HR Menyeluruh & Berkelanjutan untuk Perusahaan Berkembang</p>
-                <button class="btn-detail" onclick="openServiceModal('hr-retainer')">
-                    Lihat Detail <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
         </div>
+    </section>
+    
+    <!-- Modal/Popup untuk Detail Layanan -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal-content">
+            <!-- Konten modal akan diisi oleh JavaScript -->
+        </div>
     </div>
-</section>
-
-<!-- Modal/Popup untuk Detail Layanan -->
-<div class="modal-overlay" id="serviceModal">
-    <div class="modal-content">
-        <!-- Konten modal akan diisi oleh JavaScript -->
-    </div>
-</div>
-
+    
     <!-- Team -->
     <section id="team">
         <div class="container">
@@ -3213,509 +2184,312 @@ nav ul li a:hover:after {
                         <a href="https://www.instagram.com/auliarizkira?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-        
-                
-
             </div>
         </div>
     </section>
-<!-- Clients & Partnership Section -->
-<section id="clients" style="background-color: #f9fafc; padding: 80px 0;">
-    <div class="container">
-        <h2 class="section-title">Klien & Kerjasama</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--gray);">
-            Kami bangga telah dipercaya oleh berbagai perusahaan terkemuka dalam mendukung transformasi bisnis dan pengelolaan SDM mereka.
-        </p>
-        
-        <div class="clients-container">
-            <!-- Navigation Buttons -->
-            <div class="clients-nav-container">
-                <button class="client-nav-btn left-btn" aria-label="Geser ke kiri">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+    
+    <!-- Clients & Partnership Section -->
+    <section id="clients">
+        <div class="container">
+            <h2 class="section-title">Klien & Kerjasama</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--gray);">
+                Kami bangga telah dipercaya oleh berbagai perusahaan terkemuka dalam mendukung transformasi bisnis dan pengelolaan SDM mereka.
+            </p>
+            
+            <div class="clients-container">
+                <!-- Navigation Buttons -->
+                <div class="clients-nav-container">
+                    <button class="client-nav-btn left-btn" aria-label="Geser ke kiri">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <!-- Clients Logos Horizontal Scroll -->
+                    <div class="clients-scroll-wrapper">
+                        <div class="clients-track">
+                            <!-- Logo klien akan diisi oleh JavaScript -->
+                            <!-- Baris pertama logo -->
+                            <div class="client-logo">
+                                <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
+                                <div class="client-tooltip">Adivasa</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
+                                <div class="client-tooltip">PT Admart Indonesia</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
+                                <div class="client-tooltip">Cotton DNA Semarang</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
+                                <div class="client-tooltip">PT Supersublim Indonesia</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
+                                <div class="client-tooltip">Nuclear</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/pilar_abadi.png" alt="Pilar Abadi Realty" loading="lazy">
+                                <div class="client-tooltip">Pilar Abadi Realty</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/pt_karya_sinergi_cemerlang-removebg-preview.png" alt="PT Karya Sinergi Cemerlang" loading="lazy">
+                                <div class="client-tooltip">PT Karya Sinergi Cemerlang</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/PT_Zhiyuan_International_Trade-removebg-preview.png" alt="PT Zhiyuan International" loading="lazy">
+                                <div class="client-tooltip">PT Zhiyuan International</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/wadah_kertas_nusantara.png" alt="Wadah Kertas Nusantara" loading="lazy">
+                                <div class="client-tooltip">Wadah Kertas Nusantara</div>
+                            </div>
+                            <!-- Duplikat untuk animasi seamless -->
+                            <div class="client-logo">
+                                <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
+                                <div class="client-tooltip">Adivasa</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
+                                <div class="client-tooltip">PT Admart Indonesia</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
+                                <div class="client-tooltip">Cotton DNA Semarang</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
+                                <div class="client-tooltip">PT Supersublim Indonesia</div>
+                            </div>
+                            <div class="client-logo">
+                                <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
+                                <div class="client-tooltip">Nuclear</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="client-nav-btn right-btn" aria-label="Geser ke kanan">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
                 
-                <!-- Clients Logos Horizontal Scroll -->
-                <div class="clients-scroll-wrapper">
-                    <div class="clients-track">
-                        <!-- Logo klien akan diisi oleh JavaScript -->
-                        <!-- Baris pertama logo -->
-                        <div class="client-logo">
-                            <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
-                            <div class="client-tooltip">Adivasa</div>
+                <div class="testimonial-section">
+                    <h3>Testimoni Klien</h3>
+                    <div class="testimonial-cards">
+                        <div class="testimonial-card">
+                            <p>"SALMA Solutions membantu kami menata ulang sistem HR dengan pendekatan yang sangat profesional. Tim kami kini lebih produktif dan terstruktur."</p>
+                            <p><strong>— HR Manager, PT Admart Indonesia</strong></p>
                         </div>
-                        <div class="client-logo">
-                            <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
-                            <div class="client-tooltip">PT Admart Indonesia</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
-                            <div class="client-tooltip">Cotton DNA Semarang</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
-                            <div class="client-tooltip">PT Supersublim Indonesia</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
-                            <div class="client-tooltip">Nuclear</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/pilar_abadi.png" alt="Pilar Abadi Realty" loading="lazy">
-                            <div class="client-tooltip">Pilar Abadi Realty</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/pt_karya_sinergi_cemerlang-removebg-preview.png" alt="PT Karya Sinergi Cemerlang" loading="lazy">
-                            <div class="client-tooltip">PT Karya Sinergi Cemerlang</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/PT_Zhiyuan_International_Trade-removebg-preview.png" alt="PT Zhiyuan International" loading="lazy">
-                            <div class="client-tooltip">PT Zhiyuan International</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/wadah_kertas_nusantara.png" alt="Wadah Kertas Nusantara" loading="lazy">
-                            <div class="client-tooltip">Wadah Kertas Nusantara</div>
-                        </div>
-                        <!-- Duplikat untuk animasi seamless -->
-                        <div class="client-logo">
-                            <img src="foto/adivasa-removebg-preview.png" alt="Adivasa" loading="lazy">
-                            <div class="client-tooltip">Adivasa</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/admart.png" alt="PT Admart Indonesia" loading="lazy">
-                            <div class="client-tooltip">PT Admart Indonesia</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/cotton_dna_semarang-removebg-preview.png" alt="Cotton DNA Semarang" loading="lazy">
-                            <div class="client-tooltip">Cotton DNA Semarang</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/logo-super-sublim-scaled.png" alt="PT Supersublim Indonesia" loading="lazy">
-                            <div class="client-tooltip">PT Supersublim Indonesia</div>
-                        </div>
-                        <div class="client-logo">
-                            <img src="foto/nuclear-removebg-preview.png" alt="Nuclear" loading="lazy">
-                            <div class="client-tooltip">Nuclear</div>
+                        
+                        <div class="testimonial-card">
+                            <p>"Layanan headhunter-nya sangat memudahkan. Dalam waktu singkat kami mendapatkan kandidat yang tepat dan langsung perform."</p>
+                            <p><strong>— Branch Manager, PT Supersublim Indonesia</strong></p>
                         </div>
                     </div>
                 </div>
-                
-                <button class="client-nav-btn right-btn" aria-label="Geser ke kanan">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container" id="kontak">
+            <div class="footer-container">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <h3>SALMA Solutions</h3>
+                        <p>PT Satu Langkah Maju Bersama</p>
+                        <p>Konsultan Bisnis | Headhunter | Produk Digital HR</p>
+                        <div class="social-links">
+                            <a href="https://wa.me/6281901763203" target="_blank" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://instagram.com/satulangkah_bersama" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="mailto:satulangkahmajubersama@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://goo.gl/maps/gX8YrTqo2JQesePCA" target="_blank" title="Lokasi">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-contact-map">
+                        <div class="contact-info">
+                            <h3>Kontak & Lokasi</h3>
+                            <ul class="footer-links">
+                                <li>
+                                    <i class="fab fa-whatsapp"></i> 
+                                    <a href="https://wa.me/6281901763203" target="_blank">+62 819-0176-3203</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i> 
+                                    <a href="mailto:satulangkahmajubersama@gmail.com">satulangkahmajubersama@gmail.com</a>
+                                </li>
+                                <li>
+                                    <i class="fab fa-instagram"></i> 
+                                    <a href="https://instagram.com/satulangkah_bersama" target="_blank">@satulangkah_bersama</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <a href="https://goo.gl/maps/gX8YrTqo2JQesePCA" target="_blank">Sampangan, Semarang, Jawa Tengah</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <a href="https://maps.app.goo.gl/26tRNjuGeuxKkyaf7" target="_blank">Bringin, Ngaliyan, Jawa Tengah</a>
+                                </li>
+                                <li><span>Jam Operasional: <br>Senin - Sabtu: 09:00 - 18:00 | Minggu: Tutup</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.34839167358!2d110.414474!3d-7.005543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDAnMTkuOSJTIDExMMKwMjQnNTIuMSJF!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="testimonial-section">
-                <h3>Testimoni Klien</h3>
-                <div class="testimonial-card">
-                    <p>"SALMA Solutions membantu kami menata ulang sistem HR dengan pendekatan yang sangat profesional. Tim kami kini lebih produktif dan terstruktur."</p>
-                    <p><strong>— HR Manager, PT Admart Indonesia</strong></p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"Layanan headhunter-nya sangat memudahkan. Dalam waktu singkat kami mendapatkan kandidat yang tepat dan langsung perform."</p>
-                    <p><strong>— Branch Manager, PT Supersublim Indonesia</strong></p>
-                </div>
+            <div class="copyright">
+                <p>&copy; 2023 SALMA Solutions - PT Satu Langkah Maju Bersama. All Rights Reserved.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="container" id="kontak">
-        <div class="footer-container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <h3>SALMA Solutions</h3>
-                    <p>PT Satu Langkah Maju Bersama</p>
-                    <p>Konsultan Bisnis | Headhunter | Produk Digital HR</p>
-                    <div class="social-links">
-                        <a href="https://wa.me/6281901763203" target="_blank" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://instagram.com/satulangkah_bersama" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:satulangkahmajubersama@gmail.com" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://goo.gl/maps/gX8YrTqo2JQesePCA" target="_blank" title="Lokasi">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </a>
-
-                    </div>
-                    
-                </div>
-                
-                
-                <div class="footer-contact-map">
-                    <div class="contact-info">
-                        <h3>Kontak & Lokasi</h3>
-                        <ul class="footer-links">
-                            <li>
-                                <i class="fab fa-whatsapp"></i> 
-                                <a href="https://wa.me/6281901763203" target="_blank">+62 819-0176-3203</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-envelope"></i> 
-                                <a href="mailto:satulangkahmajubersama@gmail.com">satulangkahmajubersama@gmail.com</a>
-                            </li>
-                            <li>
-                                <i class="fab fa-instagram"></i> 
-                                <a href="https://instagram.com/satulangkah_bersama" target="_blank">@satulangkah_bersama</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i> 
-                                <a href="https://goo.gl/maps/gX8YrTqo2JQesePCA" target="_blank">Sampangan, Semarang, Jawa Tengah</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i> 
-                                <a href="https://maps.app.goo.gl/26tRNjuGeuxKkyaf7" target="_blank">Bringin, Ngaliyan, Jawa Tengah</a>
-                            </li>
-                            <li>                        <span>Jam Operasional: <br>Senin - Sabtu: 09:00 - 18:00 | Minggu: Tutup</span>
-</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="map-container">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.34839167358!2d110.414474!3d-7.005543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDAnMTkuOSJTIDExMMKwMjQnNTIuMSJF!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 SALMA Solutions - PT Satu Langkah Maju Bersama. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<style>
-    /* Footer Styles */
-    footer {
-        background-color: var(--primary);
-        color: white;
-        padding: 60px 0 30px;
-    }
+    </footer>
     
-    .footer-container {
-        margin-bottom: 40px;
-    }
-    
-    .footer-main {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        gap: 60px;
-        align-items: start;
-    }
-    
-    .footer-brand h3 {
-        color: white;
-        margin-bottom: 15px;
-        position: relative;
-        padding-bottom: 10px;
-        font-size: 1.5rem;
-    }
-    
-    .footer-brand h3:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background-color: var(--accent);
-    }
-    
-    .footer-brand p {
-        margin-bottom: 10px;
-        color: #ddd;
-        line-height: 1.5;
-    }
-    
-    .footer-contact-map {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: start;
-    }
-    
-    .contact-info h3 {
-        color: white;
-        margin-bottom: 20px;
-        position: relative;
-        padding-bottom: 10px;
-        font-size: 1.3rem;
-    }
-    
-    .contact-info h3:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background-color: var(--accent);
-    }
-    
-    .footer-links {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .footer-links li {
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        transition: transform 0.2s ease;
-    }
-    
-    .footer-links li:hover {
-        transform: translateX(5px);
-    }
-    
-    .footer-links li i {
-        margin-right: 12px;
-        width: 20px;
-        color: var(--accent);
-        font-size: 1.1rem;
-    }
-    
-    .footer-links a {
-        color: #ddd;
-        text-decoration: none;
-        transition: color 0.3s;
-        font-size: 0.95rem;
-    }
-    
-    .footer-links a:hover {
-        color: var(--accent);
-    }
-    
-    .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 25px;
-    }
-    
-    .social-links a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 45px;
-        height: 45px;
-        background-color: rgba(255,255,255,0.1);
-        border-radius: 50%;
-        color: white;
-        transition: all 0.3s;
-        text-decoration: none;
-    }
-    
-    .social-links a:hover {
-        background-color: var(--accent);
-        color: var(--dark);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    
-    .map-container {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        height: 250px;
-    }
-    
-    .map-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-    
-    .copyright {
-        text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        font-size: 0.9rem;
-        color: #ddd;
-    }
-    
-    /* Responsive Footer */
-    @media (max-width: 992px) {
-        .footer-main {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        
-        .footer-contact-map {
-            gap: 30px;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .footer-contact-map {
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        
-        .footer-brand,
-        .contact-info {
-            text-align: center;
-        }
-        
-        .footer-brand h3:after,
-        .contact-info h3:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .social-links {
-            justify-content: center;
-        }
-        
-        .footer-links li {
-            justify-content: center;
-        }
-        
-        .map-container {
-            height: 200px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        footer {
-            padding: 40px 0 20px;
-        }
-        
-        .footer-main {
-            gap: 30px;
-        }
-        
-        .footer-contact-map {
-            gap: 25px;
-        }
-        
-        .social-links {
-            gap: 10px;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-        }
-    }
-</style>
     <script>
-    
-// PERBAIKAN MOBILE MENU TOGGLE YANG LEBIH PROFESIONAL
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav');
-    const body = document.body;
-    
-    // Buat overlay jika belum ada
-    let overlay = document.querySelector('.menu-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'menu-overlay';
-        document.body.appendChild(overlay);
-    }
-    
-    if (mobileMenuBtn && nav) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        // ============================================
+        // MOBILE MENU FUNCTIONALITY
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            const body = document.body;
+            const header = document.querySelector('header');
+            const overlay = document.querySelector('.menu-overlay');
             
-            toggleMobileMenu();
-        });
-        
-        // Close menu dengan overlay
-        overlay.addEventListener('click', closeMobileMenu);
-        
-        // Close menu dengan ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nav.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Close menu ketika klik link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-        
-        // Fungsi toggle menu
-        function toggleMobileMenu() {
-            const isActive = nav.classList.contains('active');
-            
-            if (!isActive) {
-                // Buka menu
-                nav.classList.add('active');
-                overlay.classList.add('active');
-                body.classList.add('menu-open');
+            // Toggle Mobile Menu
+            function toggleMobileMenu() {
+                const isActive = nav.classList.contains('active');
                 
-                // Ubah icon
+                if (!isActive) {
+                    // Open menu
+                    nav.classList.add('active');
+                    overlay.classList.add('active');
+                    body.classList.add('menu-open');
+                    
+                    // Change icon
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    }
+                    
+                    header.classList.add('menu-active');
+                } else {
+                    closeMobileMenu();
+                }
+            }
+            
+            // Close Mobile Menu
+            function closeMobileMenu() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('menu-open');
+                
+                // Change icon back
                 const icon = mobileMenuBtn.querySelector('i');
                 if (icon) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
-            } else {
-                // Tutup menu
-                closeMobileMenu();
+                
+                header.classList.remove('menu-active');
             }
-        }
-        
-        // Fungsi close menu
-        function closeMobileMenu() {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            body.classList.remove('menu-open');
             
-            // Ubah icon kembali
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            // Event Listeners
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+                
+                overlay.addEventListener('click', closeMobileMenu);
+                
+                // Close menu with ESC key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && nav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+                
+                // Close menu when clicking links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+                
+                // Close menu on resize to desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 992 && nav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
             }
-        }
-    }
-});
-        
-        // Form Submission
-        const consultationForm = document.getElementById('consultationForm');
-        if (consultationForm) {
-            consultationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan menghubungi Anda dalam waktu 1x24 jam.');
-                this.reset();
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        }
-        
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.service-card, .team-member, .vision, .mission, .contact-item, .milestone-content, .market-trends, .target-market, .competitive-advantage, .advantage-item');
+            
+            // Consultation Form
+            const consultationForm = document.getElementById('consultationForm');
+            if (consultationForm) {
+                consultationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Terima kasih! Pesan Anda telah terkirim. Tim kami akan menghubungi Anda dalam waktu 1x24 jam.');
+                    this.reset();
+                });
+            }
+            
+            // Intersection Observer for Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            const animateElements = document.querySelectorAll('.service-card-minimal, .team-member, .vision, .mission, .advantage-item, .milestone-content');
             
             animateElements.forEach(el => {
                 el.style.opacity = '0';
@@ -3725,375 +2499,358 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-    </script>
-    <script>
-// Enhanced Clients Carousel with Auto-scroll and Manual Controls
-document.addEventListener('DOMContentLoaded', function() {
-    const clientsSection = document.getElementById('clients');
-    if (!clientsSection) return;
-    
-    const scrollWrapper = clientsSection.querySelector('.clients-scroll-wrapper');
-    const clientsTrack = clientsSection.querySelector('.clients-track');
-    const leftBtn = clientsSection.querySelector('.left-btn');
-    const rightBtn = clientsSection.querySelector('.right-btn');
-    
-    if (!scrollWrapper || !clientsTrack || !leftBtn || !rightBtn) return;
-    
-    // Variables for drag functionality
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-    let autoScrollInterval;
-    let isAutoScrolling = true;
-    
-    // Initialize auto-scroll
-    function initAutoScroll() {
-        // Reset animation
-        clientsTrack.style.animation = 'scroll-left 40s linear infinite';
-        clientsTrack.style.animationPlayState = 'running';
-        
-        // Pause on hover
-        scrollWrapper.addEventListener('mouseenter', () => {
-            if (isAutoScrolling) {
+        // ============================================
+        // CLIENTS CAROUSEL
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const clientsSection = document.getElementById('clients');
+            if (!clientsSection) return;
+            
+            const scrollWrapper = clientsSection.querySelector('.clients-scroll-wrapper');
+            const clientsTrack = clientsSection.querySelector('.clients-track');
+            const leftBtn = clientsSection.querySelector('.left-btn');
+            const rightBtn = clientsSection.querySelector('.right-btn');
+            
+            if (!scrollWrapper || !clientsTrack || !leftBtn || !rightBtn) return;
+            
+            // Variables for drag functionality
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+            let isAutoScrolling = true;
+            
+            // Initialize auto-scroll
+            function initAutoScroll() {
+                clientsTrack.style.animation = 'scroll-left 40s linear infinite';
+                clientsTrack.style.animationPlayState = 'running';
+                
+                // Pause on hover
+                scrollWrapper.addEventListener('mouseenter', () => {
+                    if (isAutoScrolling) {
+                        clientsTrack.style.animationPlayState = 'paused';
+                    }
+                });
+                
+                scrollWrapper.addEventListener('mouseleave', () => {
+                    if (isAutoScrolling) {
+                        clientsTrack.style.animationPlayState = 'running';
+                    }
+                });
+            }
+            
+            // Manual scroll functions
+            function scrollLeftManual() {
+                isAutoScrolling = false;
                 clientsTrack.style.animationPlayState = 'paused';
+                
+                const scrollAmount = scrollWrapper.offsetWidth * 0.8;
+                scrollWrapper.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(() => {
+                    if (!isDragging) {
+                        isAutoScrolling = true;
+                        clientsTrack.style.animationPlayState = 'running';
+                    }
+                }, 5000);
             }
+            
+            function scrollRightManual() {
+                isAutoScrolling = false;
+                clientsTrack.style.animationPlayState = 'paused';
+                
+                const scrollAmount = scrollWrapper.offsetWidth * 0.8;
+                scrollWrapper.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(() => {
+                    if (!isDragging) {
+                        isAutoScrolling = true;
+                        clientsTrack.style.animationPlayState = 'running';
+                    }
+                }, 5000);
+            }
+            
+            // Drag functionality
+            function startDrag(e) {
+                isDragging = true;
+                isAutoScrolling = false;
+                clientsTrack.style.animationPlayState = 'paused';
+                
+                startX = e.pageX || e.touches[0].pageX;
+                scrollLeft = scrollWrapper.scrollLeft;
+                
+                scrollWrapper.style.cursor = 'grabbing';
+                scrollWrapper.style.userSelect = 'none';
+            }
+            
+            function doDrag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const x = e.pageX || e.touches[0].pageX;
+                const walk = (x - startX) * 2;
+                scrollWrapper.scrollLeft = scrollLeft - walk;
+            }
+            
+            function endDrag() {
+                isDragging = false;
+                scrollWrapper.style.cursor = 'grab';
+                scrollWrapper.style.userSelect = 'auto';
+                
+                setTimeout(() => {
+                    if (!isDragging && isAutoScrolling) {
+                        clientsTrack.style.animationPlayState = 'running';
+                    }
+                }, 3000);
+            }
+            
+            // Event listeners
+            leftBtn.addEventListener('click', scrollLeftManual);
+            rightBtn.addEventListener('click', scrollRightManual);
+            
+            // Mouse events
+            scrollWrapper.addEventListener('mousedown', startDrag);
+            scrollWrapper.addEventListener('mousemove', doDrag);
+            scrollWrapper.addEventListener('mouseup', endDrag);
+            scrollWrapper.addEventListener('mouseleave', endDrag);
+            
+            // Touch events
+            scrollWrapper.addEventListener('touchstart', startDrag);
+            scrollWrapper.addEventListener('touchmove', doDrag);
+            scrollWrapper.addEventListener('touchend', endDrag);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    scrollLeftManual();
+                } else if (e.key === 'ArrowRight') {
+                    scrollRightManual();
+                }
+            });
+            
+            // Initialize
+            initAutoScroll();
+            
+            // Responsive adjustments
+            function handleResize() {
+                const speed = window.innerWidth < 768 ? '50s' : '40s';
+                clientsTrack.style.animationDuration = speed;
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
         });
         
-        scrollWrapper.addEventListener('mouseleave', () => {
-            if (isAutoScrolling) {
-                clientsTrack.style.animationPlayState = 'running';
+        // ============================================
+        // SERVICE MODAL FUNCTIONALITY
+        // ============================================
+        // Data detail layanan
+        const serviceDetails = {
+            'consulting': {
+                title: 'Konsultasi Bisnis & Manajemen',
+                icon: 'fas fa-brain',
+                description: 'Menyusun strategi bisnis, sistem kerja, dan SOP yang efektif untuk efisiensi dan pertumbuhan bisnis.',
+                features: [
+                    'Business Model & Strategy Development',
+                    'Manajemen Operasional & SDM',
+                    'Transformasi Digital Bisnis',
+                    'SOP & Sistem Manajemen',
+                    'Pendampingan Bisnis UMKM hingga Korporat'
+                ]
+            },
+            'staffing': {
+                title: 'Penyediaan Jasa Tenaga Kerja',
+                icon: 'fas fa-users',
+                description: 'Menyediakan kandidat profesional yang sesuai kebutuhan perusahaan, dari staff hingga eksekutif.',
+                features: [
+                    'Rekrutmen & Seleksi (Staff-Managerial)',
+                    'Penyedia Tenaga Kerja Harian/Kontrak',
+                    'Outsourcing SDM (non-core function)',
+                    'HR Project & Talent Placement',
+                    'Executive Search untuk Level Direksi'
+                ]
+            },
+            'hr-audit': {
+                title: 'Audit & Pengembangan HR',
+                icon: 'fas fa-chart-line',
+                description: 'Menganalisis sistem HR, evaluasi kinerja SDM, dan rekomendasi perbaikan.',
+                features: [
+                    'Analisis Sistem HR yang komprehensif',
+                    'Evaluasi Kinerja SDM metode terbaru',
+                    'Rekomendasi Perbaikan berbasis data',
+                    'Pengembangan Organisasi',
+                    'Competency Based Assessment'
+                ]
+            },
+            'hr-retainer': {
+                title: 'Program HR Retainer',
+                icon: 'fas fa-user-cog',
+                description: 'Layanan HR Menyeluruh & Berkelanjutan untuk Perusahaan Berkembang',
+                features: [
+                    {title: 'Rekrutmen & Seleksi', desc: 'Sistem berbasis kompetensi'},
+                    {title: 'Penggajian & Administrasi', desc: 'Akurat dan tepat waktu'},
+                    {title: 'Kontrak & Perjanjian Kerja', desc: 'Sesuai regulasi terbaru'},
+                    {title: 'SOP HR', desc: 'Dokumentasi sistematis'},
+                    {title: 'Training & Development', desc: 'Peningkatan kompetensi'},
+                    {title: 'Hubungan Industrial', desc: 'Pendampingan profesional'}
+                ],
+                benefits: [
+                    'Tim Konsultan Berpengalaman di Berbagai Industri',
+                    'Pendekatan Personal & Solusi yang Disesuaikan',
+                    'Sistem Rekrutmen & Pelatihan Berbasis Kompetensi',
+                    'Laporan & Monitoring Berkala',
+                    'Garansi Kepuasan Layanan',
+                    'Efisiensi Biaya hingga 40% dibanding HR internal'
+                ],
+                specialNotes: [
+                    'Fleksibilitas akses layanan: harian, bulanan, atau tahunan',
+                    'Laporan kinerja HR dan rekomendasi perbaikan berkala',
+                    'Cocok untuk perusahaan yang ingin fokus pada bisnis inti'
+                ]
             }
-        });
-    }
-    
-    // Manual scroll functions
-    function scrollLeftManual() {
-        isAutoScrolling = false;
-        clientsTrack.style.animationPlayState = 'paused';
+        };
         
-        const scrollAmount = scrollWrapper.offsetWidth * 0.8;
-        scrollWrapper.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-        
-        // Resume auto-scroll after 5 seconds
-        setTimeout(() => {
-            if (!isDragging) {
-                isAutoScrolling = true;
-                clientsTrack.style.animationPlayState = 'running';
-            }
-        }, 5000);
-    }
-    
-    function scrollRightManual() {
-        isAutoScrolling = false;
-        clientsTrack.style.animationPlayState = 'paused';
-        
-        const scrollAmount = scrollWrapper.offsetWidth * 0.8;
-        scrollWrapper.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-        
-        // Resume auto-scroll after 5 seconds
-        setTimeout(() => {
-            if (!isDragging) {
-                isAutoScrolling = true;
-                clientsTrack.style.animationPlayState = 'running';
-            }
-        }, 5000);
-    }
-    
-    // Drag functionality
-    function startDrag(e) {
-        isDragging = true;
-        isAutoScrolling = false;
-        clientsTrack.style.animationPlayState = 'paused';
-        
-        startX = e.pageX || e.touches[0].pageX;
-        scrollLeft = scrollWrapper.scrollLeft;
-        
-        scrollWrapper.style.cursor = 'grabbing';
-        scrollWrapper.style.userSelect = 'none';
-    }
-    
-    function doDrag(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        
-        const x = e.pageX || e.touches[0].pageX;
-        const walk = (x - startX) * 2; // Multiply for faster drag
-        scrollWrapper.scrollLeft = scrollLeft - walk;
-    }
-    
-    function endDrag() {
-        isDragging = false;
-        scrollWrapper.style.cursor = 'grab';
-        scrollWrapper.style.userSelect = 'auto';
-        
-        // Resume auto-scroll after 3 seconds if not manually interacting
-        setTimeout(() => {
-            if (!isDragging && isAutoScrolling) {
-                clientsTrack.style.animationPlayState = 'running';
-            }
-        }, 3000);
-    }
-    
-    // Event listeners
-    leftBtn.addEventListener('click', scrollLeftManual);
-    rightBtn.addEventListener('click', scrollRightManual);
-    
-    // Mouse events for drag
-    scrollWrapper.addEventListener('mousedown', startDrag);
-    scrollWrapper.addEventListener('mousemove', doDrag);
-    scrollWrapper.addEventListener('mouseup', endDrag);
-    scrollWrapper.addEventListener('mouseleave', endDrag);
-    
-    // Touch events for mobile
-    scrollWrapper.addEventListener('touchstart', startDrag);
-    scrollWrapper.addEventListener('touchmove', doDrag);
-    scrollWrapper.addEventListener('touchend', endDrag);
-    
-    // Initialize
-    initAutoScroll();
-    
-    // Add keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            scrollLeftManual();
-        } else if (e.key === 'ArrowRight') {
-            scrollRightManual();
-        }
-    });
-    
-    // Infinite scroll detection
-    scrollWrapper.addEventListener('scroll', () => {
-        const maxScroll = clientsTrack.scrollWidth - scrollWrapper.clientWidth;
-        if (scrollWrapper.scrollLeft >= maxScroll - 100) {
-            // Reset to beginning for seamless loop
-            setTimeout(() => {
-                scrollWrapper.scrollLeft = 0;
-            }, 100);
-        }
-    });
-    
-    // Responsive adjustments
-    function handleResize() {
-        // Adjust animation speed based on screen size
-        const speed = window.innerWidth < 768 ? '50s' : '40s';
-        clientsTrack.style.animationDuration = speed;
-    }
-    
-    window.addEventListener('resize', handleResize);
-    handleResize();
-});
-</script>
-<script>
-// Data detail layanan versi simple
-const serviceDetails = {
-    'consulting': {
-        title: 'Konsultasi Bisnis & Manajemen',
-        icon: 'fas fa-brain',
-        description: 'Menyusun strategi bisnis, sistem kerja, dan SOP yang efektif untuk efisiensi dan pertumbuhan bisnis.',
-        features: [
-            'Business Model & Strategy Development',
-            'Manajemen Operasional & SDM',
-            'Transformasi Digital Bisnis',
-            'SOP & Sistem Manajemen',
-            'Pendampingan Bisnis UMKM hingga Korporat'
-        ]
-    },
-    'staffing': {
-        title: 'Penyediaan Jasa Tenaga Kerja',
-        icon: 'fas fa-users',
-        description: 'Menyediakan kandidat profesional yang sesuai kebutuhan perusahaan, dari staff hingga eksekutif.',
-        features: [
-            'Rekrutmen & Seleksi (Staff-Managerial)',
-            'Penyedia Tenaga Kerja Harian/Kontrak',
-            'Outsourcing SDM (non-core function)',
-            'HR Project & Talent Placement',
-            'Executive Search untuk Level Direksi'
-        ]
-    },
-    'hr-audit': {
-        title: 'Audit & Pengembangan HR',
-        icon: 'fas fa-chart-line',
-        description: 'Menganalisis sistem HR, evaluasi kinerja SDM, dan rekomendasi perbaikan.',
-        features: [
-            'Analisis Sistem HR yang komprehensif',
-            'Evaluasi Kinerja SDM metode terbaru',
-            'Rekomendasi Perbaikan berbasis data',
-            'Pengembangan Organisasi',
-            'Competency Based Assessment'
-        ]
-    },
-    'hr-retainer': {
-        title: 'Program HR Retainer',
-        icon: 'fas fa-user-cog',
-        description: 'Layanan HR Menyeluruh & Berkelanjutan untuk Perusahaan Berkembang',
-        features: [
-            {title: 'Rekrutmen & Seleksi', desc: 'Sistem berbasis kompetensi'},
-            {title: 'Penggajian & Administrasi', desc: 'Akurat dan tepat waktu'},
-            {title: 'Kontrak & Perjanjian Kerja', desc: 'Sesuai regulasi terbaru'},
-            {title: 'SOP HR', desc: 'Dokumentasi sistematis'},
-            {title: 'Training & Development', desc: 'Peningkatan kompetensi'},
-            {title: 'Hubungan Industrial', desc: 'Pendampingan profesional'}
-        ],
-        benefits: [
-            'Tim Konsultan Berpengalaman di Berbagai Industri',
-            'Pendekatan Personal & Solusi yang Disesuaikan',
-            'Sistem Rekrutmen & Pelatihan Berbasis Kompetensi',
-            'Laporan & Monitoring Berkala',
-            'Garansi Kepuasan Layanan',
-            'Efisiensi Biaya hingga 40% dibanding HR internal'
-        ],
-        specialNotes: [
-            'Fleksibilitas akses layanan: harian, bulanan, atau tahunan',
-            'Laporan kinerja HR dan rekomendasi perbaikan berkala',
-            'Cocok untuk perusahaan yang ingin fokus pada bisnis inti'
-        ]
-    }
-};
-
-// Fungsi untuk membuka modal simple
-function openServiceModal(serviceId) {
-    const modal = document.getElementById('serviceModal');
-    const modalContent = modal.querySelector('.modal-content');
-    const service = serviceDetails[serviceId];
-    
-    // Cek jika service adalah HR Retainer (khusus)
-    if (serviceId === 'hr-retainer') {
-        modalContent.innerHTML = `
-            <div class="modal-header">
-                <h3><i class="${service.icon}"></i> ${service.title}</h3>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="service-detail-content">
-                    <div class="service-detail-header">
-                        <div class="service-detail-icon">
-                            <i class="${service.icon}"></i>
-                        </div>
-                        <h2>${service.title}</h2>
-                        <p>${service.description}</p>
-                        <p><strong>Solusi komprehensif tanpa perlu membangun tim HR internal yang mahal</strong></p>
+        // Fungsi untuk membuka modal
+        function openServiceModal(serviceId) {
+            const modal = document.getElementById('serviceModal');
+            const modalContent = modal.querySelector('.modal-content');
+            const service = serviceDetails[serviceId];
+            
+            if (serviceId === 'hr-retainer') {
+                modalContent.innerHTML = `
+                    <div class="modal-header">
+                        <h3><i class="${service.icon}"></i> ${service.title}</h3>
+                        <button class="close-modal" onclick="closeModal()">&times;</button>
                     </div>
-                    
-                    <div class="service-section">
-                        <h4><i class="fas fa-check-circle"></i> Layanan Utama</h4>
-                        <div class="compact-features">
-                            ${service.features.map(item => `
-                                <div class="compact-feature">
-                                    <strong>${item.title}</strong>
-                                    <span>${item.desc}</span>
+                    <div class="modal-body">
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <div class="service-detail-icon">
+                                    <i class="${service.icon}"></i>
                                 </div>
-                            `).join('')}
+                                <h2>${service.title}</h2>
+                                <p>${service.description}</p>
+                                <p><strong>Solusi komprehensif tanpa perlu membangun tim HR internal yang mahal</strong></p>
+                            </div>
+                            
+                            <div class="service-section">
+                                <h4><i class="fas fa-check-circle"></i> Layanan Utama</h4>
+                                <div class="compact-features">
+                                    ${service.features.map(item => `
+                                        <div class="compact-feature">
+                                            <strong>${item.title}</strong>
+                                            <span>${item.desc}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="service-section">
+                                <h4><i class="fas fa-star"></i> Kenapa Memilih Kami?</h4>
+                                <ul>
+                                    ${service.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="service-section">
+                                <h4><i class="fas fa-info-circle"></i> Informasi Tambahan</h4>
+                                <ul>
+                                    ${service.specialNotes.map(note => `<li>${note}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="service-cta">
+                                <a href="https://wa.me/6281901763203?text=Halo SALMA Solutions, saya tertarik dengan Program HR Retainer" 
+                                   class="btn" 
+                                   target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                                </a>
+                                <button class="btn btn-outline" onclick="closeModal()">
+                                    Tutup
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="service-section">
-                        <h4><i class="fas fa-star"></i> Kenapa Memilih Kami?</h4>
-                        <ul>
-                            ${service.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
-                        </ul>
+                `;
+            } else {
+                modalContent.innerHTML = `
+                    <div class="modal-header">
+                        <h3><i class="${service.icon}"></i> ${service.title}</h3>
+                        <button class="close-modal" onclick="closeModal()">&times;</button>
                     </div>
-                    
-                    <div class="service-section">
-                        <h4><i class="fas fa-info-circle"></i> Informasi Tambahan</h4>
-                        <ul>
-                            ${service.specialNotes.map(note => `<li>${note}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="service-cta">
-                        <a href="https://wa.me/6281901763203?text=Halo SALMA Solutions, saya tertarik dengan Program HR Retainer" 
-                           class="btn" 
-                           target="_blank">
-                            <i class="fab fa-whatsapp"></i> Konsultasi Gratis
-                        </a>
-                        <button class="btn btn-outline" onclick="closeModal()">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    } else {
-        // Untuk layanan lainnya
-        modalContent.innerHTML = `
-            <div class="modal-header">
-                <h3><i class="${service.icon}"></i> ${service.title}</h3>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="service-detail-content">
-                    <div class="service-detail-header">
-                        <div class="service-detail-icon">
-                            <i class="${service.icon}"></i>
+                    <div class="modal-body">
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <div class="service-detail-icon">
+                                    <i class="${service.icon}"></i>
+                                </div>
+                                <h2>${service.title}</h2>
+                                <p>${service.description}</p>
+                            </div>
+                            
+                            <div class="service-section">
+                                <h4><i class="fas fa-check-circle"></i> Cakupan Layanan</h4>
+                                <ul>
+                                    ${service.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="service-section">
+                                <h4><i class="fas fa-lightbulb"></i> Manfaat</h4>
+                                <ul>
+                                    <li>Solusi yang disesuaikan dengan kebutuhan bisnis</li>
+                                    <li>Pendekatan praktis dan hasil yang terukur</li>
+                                    <li>Tim konsultan berpengalaman</li>
+                                    <li>Efisiensi waktu dan biaya</li>
+                                    <li>Dukungan berkelanjutan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-cta">
+                                <a href="https://wa.me/6281901763203?text=Halo SALMA Solutions, saya tertarik dengan ${encodeURIComponent(service.title)}" 
+                                   class="btn" 
+                                   target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                                </a>
+                                <button class="btn btn-outline" onclick="closeModal()">
+                                    Tutup
+                                </button>
+                            </div>
                         </div>
-                        <h2>${service.title}</h2>
-                        <p>${service.description}</p>
                     </div>
-                    
-                    <div class="service-section">
-                        <h4><i class="fas fa-check-circle"></i> Cakupan Layanan</h4>
-                        <ul>
-                            ${service.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="service-section">
-                        <h4><i class="fas fa-lightbulb"></i> Manfaat</h4>
-                        <ul>
-                            <li>Solusi yang disesuaikan dengan kebutuhan bisnis</li>
-                            <li>Pendekatan praktis dan hasil yang terukur</li>
-                            <li>Tim konsultan berpengalaman</li>
-                            <li>Efisiensi waktu dan biaya</li>
-                            <li>Dukungan berkelanjutan</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-cta">
-                        <a href="https://wa.me/6281901763203?text=Halo SALMA Solutions, saya tertarik dengan ${encodeURIComponent(service.title)}" 
-                           class="btn" 
-                           target="_blank">
-                            <i class="fab fa-whatsapp"></i> Konsultasi Gratis
-                        </a>
-                        <button class="btn btn-outline" onclick="closeModal()">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-    
-    // Tampilkan modal
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-// Fungsi untuk menutup modal
-function closeModal() {
-    const modal = document.getElementById('serviceModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// Tutup modal saat klik di luar konten
-document.getElementById('serviceModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeModal();
-    }
-});
-
-// Tutup modal dengan tombol ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-</script>
+                `;
+            }
+            
+            // Tampilkan modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Tutup modal saat klik di luar konten
+        document.getElementById('serviceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Tutup modal dengan tombol ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
