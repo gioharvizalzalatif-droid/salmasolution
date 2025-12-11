@@ -126,48 +126,151 @@
             border-radius: 4px;
         }
         
-        /* Header Styles */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            position: fixed;
-            width: 100%;
+        /* Top Bar - Hanya untuk desktop */
+        .top-bar {
+            background: linear-gradient(90deg, #1a3a5f 0%, #2c5282 50%, #1a3a5f 100%);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-bar::before {
+            content: '';
+            position: absolute;
             top: 0;
-            z-index: 1000;
-            transition: var(--transition);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: spotlight 10s ease-in-out infinite;
+        }
+
+        @keyframes spotlight {
+            0% {
+                left: -100%;
+            }
+            15% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .business-hours {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .business-hours i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .contact-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-top i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .contact-top a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-top a:hover {
+            color: var(--accent);
         }
         
+        /* Header utama - untuk semua perangkat */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 15px 0;
+            position: relative;
         }
-        
 
-        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #066DB5;
+            position: relative;
+            overflow: hidden;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .logo-text span {
+            color: #06A1F9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation untuk desktop */
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
-        
+
         nav ul li {
-            margin-left: 28px;
+            margin-left: 25px;
         }
-        
+
         nav ul li a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
+            font-weight: 600;
+            transition: color 0.3s;
             position: relative;
-            font-size: 0.95rem;
         }
-        
+
         nav ul li a:hover {
             color: var(--secondary);
         }
-        
+
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -176,20 +279,50 @@
             width: 0;
             height: 2px;
             background-color: var(--secondary);
-            transition: var(--transition);
+            transition: width 0.3s;
         }
-        
+
         nav ul li a:hover:after {
             width: 100%;
         }
-        
+
+        .nav-button {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            background-color: #e6a82e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Tombol hamburger untuk mobile */
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background-color: #f5f7fa;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: #e2e8f0;
         }
         
         /* Product Hero Section */
@@ -347,27 +480,27 @@
         
         /* Background gambar spesifik untuk setiap produk */
         .product-card[data-product="hrga-all"] .product-image {
-            background-image: url('thumbnail_product/paket_hrga_all/foto.png');
+            background-image: url('foto/foto/ALL.jpg');
         }
         
         .product-card[data-product="kpi"] .product-image {
-            background-image: url('thumbnail_product/paket_kpi_toolkits/foto.png');
+            background-image: url('foto/foto/KPI.jpg');
         }
         
         .product-card[data-product="comben"] .product-image {
-            background-image: url('thumbnail_product/paket_compensation_benefit/foto.png');
+            background-image: url('foto/foto/COM.jpg');
         }
         
         .product-card[data-product="ir"] .product-image {
-            background-image: url('thumbnail_product/paket_industrial_relation/foto.png');
+            background-image: url('foto/foto/IR.jpg');
         }
         
         .product-card[data-product="recruitment"] .product-image {
-            background-image: url('thumbnail_product/paket_recruitment_selection/foto.png');
+            background-image: url('foto/foto/REC.jpg');
         }
         
         .product-card[data-product="hrga-k3"] .product-image {
-            background-image: url('thumbnail_product/paket_hrga_k3/foto.png');
+            background-image: url('foto/foto/HRGA.jpg');
         }
         
         .product-image i {
@@ -933,18 +1066,90 @@
             }
         }
         
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            h1 {
-                font-size: 2.5rem;
+        /* RESPONSIVE DESIGN */
+        /* Untuk tablet dan mobile - sembunyikan top bar */
+        @media (max-width: 992px) {
+            .top-bar {
+                display: none !important;
             }
             
-            h2 {
-                font-size: 2rem;
+            .mobile-menu-btn {
+                display: flex;
             }
-        }
-        
-        @media (max-width: 992px) {
+            
+            /* Navigation untuk mobile - DIPERBAIKI */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 100px 30px 30px;
+                z-index: 999;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                flex-direction: column;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+                transform: translateX(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                width: 100%;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                margin: 0;
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 20px 15px;
+                font-size: 18px;
+                width: 100%;
+                font-weight: 500;
+            }
+            
+            nav ul li a:hover {
+                background-color: rgba(74, 140, 94, 0.05);
+                color: var(--secondary);
+                padding-left: 20px;
+            }
+            
+            nav ul li .nav-button {
+                width: 100%;
+                padding: 18px;
+                font-size: 18px;
+                margin: 10px 0;
+                text-align: center;
+                border-radius: 10px;
+            }
+            
+            /* Tambahkan padding atas untuk hero section */
+            .product-hero {
+                padding-top: 140px;
+            }
+            
+            /* Responsive lainnya */
             .products-grid {
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             }
@@ -955,30 +1160,6 @@
             
             section {
                 padding: 70px 0;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 18px;
-                box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 8px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
             }
             
             .modal-content {
@@ -992,6 +1173,25 @@
             
             .gallery-item {
                 height: 100px;
+            }
+        }
+        
+        /* Untuk desktop - tampilkan top bar dan sembunyikan tombol hamburger */
+        @media (min-width: 993px) {
+            .top-bar {
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: none !important;
+            }
+            
+            nav {
+                display: block !important;
+            }
+            
+            nav ul {
+                display: flex !important;
             }
         }
         
@@ -1101,327 +1301,6 @@
     </style>
 </head>
 <body>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALMA Solutions - <?php echo $current_page == 'index.html' ? 'Beranda' : 'Produk Digital'; ?></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a3a5f;
-            --secondary: #4a8c5e;
-            --accent: #f8b739;
-            --light: #f5f7fa;
-            --dark: #2c3e50;
-            --gray: #6c757d;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: #3a7a4e;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .btn-accent {
-            background-color: var(--accent);
-            color: var(--dark);
-        }
-        
-        .btn-accent:hover {
-            background-color: #e6a82e;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        /* Top Bar dengan Jam Operasional */
-        .top-bar {
-            background: linear-gradient(90deg, #1a3a5f 0%, #2c5282 50%, #1a3a5f 100%);
-            color: white;
-            padding: 10px 0;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .top-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            animation: spotlight 10s ease-in-out infinite;
-        }
-        
-        @keyframes spotlight {
-            0% {
-                left: -100%;
-            }
-            15% {
-                left: 100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-        
-        .top-bar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .business-hours {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .business-hours i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
-        
-        .contact-top {
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-top i {
-            margin-right: 8px;
-            color: var(--accent);
-        }
-        
-        .contact-top a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
-        }
-        
-        .contact-top a:hover {
-            color: var(--accent);
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo-image {
-            height: 50px;
-            margin-right: 10px;
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #066DB5;
-            position: relative;
-            overflow: hidden;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-      
-        
-        .logo-text span {
-            color: #06A1F9;
-            position: relative;
-            z-index: 1;
-        }
-        
-
-        
-
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        .nav-button {
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background-color: #e6a82e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .top-bar-container {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                padding: 100px;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .contact-top {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .contact-top a {
-                margin-left: 0;
-            }
-            
-            .logo-text {
-                font-size: 1.3rem;
-            }
-        }
-    </style>
-</head>
-<body>
     <!-- Top Bar dengan Jam Operasional -->
     <div class="top-bar">
         <div class="container top-bar-container">
@@ -1458,17 +1337,6 @@
             </nav>
         </div>
     </header>
-
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
-        
-
-    </script>
-</body>
-</html>
 
 <!-- Product Hero Section -->
 <section class="product-hero">
@@ -1538,7 +1406,7 @@
                         <div class="price">Rp 99.000</div>
                         <div class="original-price">Rp 199.000</div>
                     </div>
-                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution', '_blank');">
+                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution/o0d9o31egzm5', '_blank');">
                         <i class="fas fa-download"></i> Download Sekarang
                     </button>
                 </div>
@@ -1557,7 +1425,7 @@
                         <div class="price">Rp 69.000</div>
                         <div class="original-price">Rp 199.000</div>
                     </div>
-                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution', '_blank');">
+                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution/4v5671ep43d2', '_blank');">
                         <i class="fas fa-download"></i> Download Sekarang
                     </button>
                 </div>
@@ -1576,7 +1444,7 @@
                         <div class="price">Rp 99.000</div>
                         <div class="original-price">Rp 199.000</div>
                     </div>
-                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution', '_blank');">
+                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution/2o4zq9re5502', '_blank');">
                         <i class="fas fa-download"></i> Download Sekarang
                     </button>
                 </div>
@@ -1595,7 +1463,7 @@
                         <div class="price">Rp 69.000</div>
                         <div class="original-price">Rp 199.000</div>
                     </div>
-                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution', '_blank');">
+                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution/34y821klwqe9', '_blank');">
                         <i class="fas fa-download"></i> Download Sekarang
                     </button>
                 </div>
@@ -1614,7 +1482,7 @@
                         <div class="price">Rp 99.000</div>
                         <div class="original-price">Rp 199.000</div>
                     </div>
-                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution', '_blank');">
+                    <button class="btn-product btn-accent" onclick="event.stopPropagation(); window.open('https://lynk.id/salmasolution/en509l9x201q', '_blank');">
                         <i class="fas fa-download"></i> Download Sekarang
                     </button>
                 </div>
@@ -2605,35 +2473,72 @@
 </div>
 
 <script>
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle - DIPERBAIKI
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
+        const body = document.body;
+        const header = document.querySelector('header');
         
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                nav.classList.toggle('active');
-            });
-        }
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-            });
-        });
-        
-        // Handle image loading errors
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            img.addEventListener('error', function() {
-                // Jika gambar gagal dimuat, tampilkan placeholder
-                if (this.src.includes('thumbnail_product')) {
-                    this.src = 'https://via.placeholder.com/600x400/1a3a5f/ffffff?text=Preview+Produk';
+        if (mobileMenuBtn && nav) {
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isActive = nav.classList.contains('active');
+                
+                if (!isActive) {
+                    // Open menu
+                    nav.classList.add('active');
+                    body.style.overflow = 'hidden';
+                    
+                    // Change icon
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    }
+                } else {
+                    closeMobileMenu();
                 }
             });
-        });
+            
+            // Close Mobile Menu
+            function closeMobileMenu() {
+                nav.classList.remove('active');
+                body.style.overflow = 'auto';
+                
+                // Change icon back
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+            
+            // Close menu when clicking links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Close menu on resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992 && nav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Handle image loading errors
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    if (this.src.includes('thumbnail_product')) {
+                        this.src = 'https://via.placeholder.com/600x400/1a3a5f/ffffff?text=Preview+Produk';
+                    }
+                });
+            });
+        }
     });
 
     // Modal Functions
@@ -2714,4 +2619,3 @@
 </script>
 </body>
 </html>
-
