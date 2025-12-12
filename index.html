@@ -131,12 +131,93 @@
         }
         
         /* ============================================
+           TOP BAR STYLES (sama seperti di produk.html)
+        ============================================ */
+        /* Top Bar - Hanya untuk desktop */
+        .top-bar {
+            background: linear-gradient(90deg, #1a3a5f 0%, #2c5282 50%, #1a3a5f 100%);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: spotlight 10s ease-in-out infinite;
+        }
+
+        @keyframes spotlight {
+            0% {
+                left: -100%;
+            }
+            15% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .business-hours {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .business-hours i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .contact-top {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-top i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .contact-top a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-top a:hover {
+            color: var(--accent);
+        }
+
+        /* ============================================
            HEADER & NAVIGATION
         ============================================ */
         header {
             background-color: white;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: fixed;
+            position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -221,16 +302,15 @@
         }
         
         .nav-button {
-    background-color: var(--accent);
-    color: var(--dark);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: all 0.3s 
-ease;
-    text-decoration: none;
-    display: inline-block;
-}
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
         
         .nav-button:hover {
             background-color: #e6a82e;
@@ -289,11 +369,11 @@ ease;
             background-position: center;
             background-attachment: fixed;
             color: white;
-            padding: 100px 0 120px;
+            padding: 160px 0 120px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            margin-top: 0;
         }
         
         .hero:before {
@@ -1480,6 +1560,16 @@ ease;
         }
         
         @media (max-width: 992px) {
+            /* Sembunyikan topbar di mobile (sama seperti di produk.html) */
+            .top-bar {
+                display: none !important;
+            }
+            
+            /* Sesuaikan padding hero section untuk mobile */
+            .hero {
+                padding: 140px 0 80px !important;
+            }
+            
             .mobile-menu-btn {
                 display: flex;
                 margin-right: 10px;
@@ -1572,11 +1662,6 @@ ease;
                 padding: 80px 0;
             }
             
-            .hero {
-                padding: 160px 0 80px;
-                margin-top: 80px;
-            }
-            
             .clients-track {
                 animation-duration: 35s;
             }
@@ -1602,15 +1687,33 @@ ease;
             }
         }
         
+        @media (min-width: 993px) {
+            /* Tampilkan topbar di desktop */
+            .top-bar {
+                display: block !important;
+            }
+            
+            /* Atur ulang topbar untuk desktop */
+            .top-bar-container {
+                flex-direction: row;
+                text-align: left;
+                padding: 0 15px;
+            }
+            
+            .business-hours, .contact-top {
+                justify-content: flex-start;
+                width: auto;
+            }
+            
+            .contact-top {
+                flex-direction: row;
+            }
+        }
+        
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
             h3 { font-size: 1.4rem; }
-            
-            .hero {
-                padding: 140px 0 80px;
-                margin-top: 80px;
-            }
             
             .services-grid {
                 grid-template-columns: 1fr;
@@ -1879,7 +1982,6 @@ ease;
             
             .hero {
                 padding: 120px 0 60px;
-                margin-top: 70px;
             }
             
             .hero h1 {
@@ -1895,6 +1997,23 @@ ease;
     </style>
 </head>
 <body>
+    <!-- Top Bar dengan Jam Operasional -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="business-hours">
+                <i class="far fa-clock"></i>
+                <span>Jam Operasional: Senin - Sabtu: 09:00 - 18:00 | Minggu: Tutup</span>
+            </div>
+            <div class="contact-top">
+                <i class="fas fa-phone-alt"></i>
+                <span>+62 819-0176-3203</span>
+                <a href="mailto:satulangkahmajubersama@gmail.com">
+                    <i class="far fa-envelope"></i> satulangkahmajubersama@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+    
     <!-- Header -->
     <header>
         <div class="header-container">
